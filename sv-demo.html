@@ -13,7 +13,7 @@
   --sv-blue-900:#0F2A5A;
   --sv-blue-700:#2E5A78;
   --sv-blue-300:#A0C6E1;
-  --gilded-gold:#A8894A;
+  --gilded-gold:#FFC34B;
 
   --pure-white:#FFFFFF;
   --text-primary:#1A1A1A;
@@ -33,6 +33,16 @@
 
   --menu-speed:550ms;
   --header-offset:96px;
+
+  --logo-gap:1rem;
+
+  /* DRY: default (closed) menu transitions – keep visibility hidden after the animation */
+  --menu-panel-transitions:
+    max-height var(--menu-speed) var(--ease-ceremonial),
+    padding   var(--menu-speed) var(--ease-ceremonial),
+    transform var(--menu-speed) var(--ease-ceremonial),
+    opacity   var(--menu-speed) var(--ease-ceremonial),
+    visibility 0s linear var(--menu-speed);
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -57,6 +67,8 @@ body{
   font-size:clamp(1rem,.95rem + .25vw,1.125rem);
   -webkit-font-smoothing:antialiased;
 }
+
+/* Anchor jump fix */
 :target{scroll-margin-top:var(--header-offset);}
 
 /* ──────────────────────────────────────────────────────────────
@@ -91,44 +103,50 @@ section{position:relative;overflow:hidden;}
   padding:var(--space-md) 0;
   max-width:1400px;margin:0 auto;width:90%;
 }
+
+/* Logo: inline-flex + gap so icon and text align and breathe */
 .header__logo{
-  font-family:var(--font-display);font-size:1.25rem;font-weight:600;
-  color:var(--sv-blue-900);text-decoration:none;letter-spacing:.08em;
-  position:relative;padding-left:2.5rem;
+  display:inline-flex;align-items:center;gap:var(--logo-gap);
+  color:var(--sv-blue-900);font-family:var(--font-display);font-size:1.25rem;font-weight:600;
+  letter-spacing:.08em;text-decoration:none;
 }
-.header__logo::before{
-  content:'◆';position:absolute;left:0;color:var(--gilded-gold);
-  font-size:1.5rem;line-height:1;
-}
+.header__logo-icon{width:20px;height:20px;display:block;color:var(--gilded-gold);}
 
 /* Desktop nav */
 .header__nav{display:flex;gap:var(--space-lg);list-style:none;}
 .header__nav-link{
-  color:var(--sv-blue-700);text-decoration:none;font-size:.95rem;font-weight:500;
-  position:relative;padding:.5rem 0;transition:color var(--duration-fast) var(--ease-ceremonial);
+  color:var(--sv-blue-700);text-decoration:none;font-size:.95rem;font-weight:500;position:relative;padding:.5rem 0;
+  transition:color var(--duration-fast) var(--ease-ceremonial);
 }
 .header__nav-link::after{
   content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gilded-gold);
   transition:width var(--duration-med) var(--ease-ceremonial);
 }
-.header__nav-link:hover{color:var(--sv-blue-900);}
-.header__nav-link:hover::after{width:100%;}
-/* Language toggle now lives inside the nav as a list item */
+@media (hover:hover){
+  .header__nav-link:hover{color:var(--sv-blue-900);}
+  .header__nav-link:hover::after{width:100%;}
+}
+
+/* Language button (now inside nav) */
 .header__lang{
   background:var(--pure-white);border:2px solid var(--gilded-gold);
   color:var(--sv-blue-900);padding:.5rem 1.25rem;border-radius:2px;
   cursor:pointer;font-size:.875rem;font-weight:600;letter-spacing:.05em;
   transition:all var(--duration-fast) var(--ease-ceremonial);
 }
-.header__lang:hover{background:var(--sv-blue-900);color:#fff;border-color:var(--sv-blue-900);}
+@media (hover:hover){
+  .header__lang:hover{background:var(--sv-blue-900);color:#fff;border-color:var(--sv-blue-900);}
+}
 .header__lang:focus-visible{outline:2px solid var(--gilded-gold);outline-offset:4px;}
-
 .header__menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--sv-blue-900);}
 
 /* ──────────────────────────────────────────────────────────────
    6) PARALLAX
    ────────────────────────────────────────────────────────────── */
-.bgimg{position:relative;opacity:.65;background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;}
+.bgimg{
+  position:relative;opacity:.65;background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;
+  content-visibility:auto;contain-intrinsic-size:100vh;
+}
 @supports (-webkit-overflow-scrolling:touch){.bgimg{background-attachment:scroll;}}
 .bgimg-1{background-image:url("https://www.w3schools.com/howto/img_parallax.jpg");min-height:100vh;}
 .bgimg-2{background-image:url("https://www.w3schools.com/howto/img_parallax2.jpg");min-height:400px;}
@@ -160,13 +178,18 @@ section{position:relative;overflow:hidden;}
 }
 .footer__list{list-style:none;}
 .footer__link{
-  color:var(--sv-blue-300);text-decoration:none;transition:color var(--duration-fast) var(--ease-ceremonial);
-  line-height:2.2;display:inline-block;
+  color:var(--sv-blue-300);text-decoration:none;line-height:2.2;display:inline-block;
+  transition:color var(--duration-fast) var(--ease-ceremonial);
 }
-.footer__link:hover{color:#fff;transform:translateX(4px);}
+@media (hover:hover){
+  .footer__link:hover{color:#fff;transform:translateX(4px);}
+}
 .footer__bottom{
   border-top:1px solid var(--sv-blue-700);
-  padding-top:var(--space-md);text-align:center;color:var(--sv-blue-300);font-size:.875rem;
+  padding-top:var(--space-md);
+  text-align:center;
+  color:var(--sv-blue-300);
+  font-size:.875rem;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -177,30 +200,31 @@ section{position:relative;overflow:hidden;}
   .header{overflow:hidden;}
   .header__inner{padding:var(--space-sm) 0;display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm);}
 
+  /* Mobile nav panel (closed) */
   .header__nav{
     order:2;width:100%;position:relative;
     display:flex;flex-direction:column;gap:var(--space-md);
     background:var(--pure-white);
     padding:0 var(--space-lg);
-    max-height:0;overflow:hidden;visibility:hidden;
-    transform-origin:top;transform:scaleY(0);opacity:0;
-    transition:
-      max-height var(--menu-speed) var(--ease-ceremonial),
-      padding   var(--menu-speed) var(--ease-ceremonial),
-      transform var(--menu-speed) var(--ease-ceremonial),
-      opacity   var(--menu-speed) var(--ease-ceremonial),
-      visibility 0s linear var(--menu-speed);
+
+    max-height:0;overflow:hidden;visibility:hidden;transform-origin:top;transform:scaleY(0);opacity:0;
+
+    transition: var(--menu-panel-transitions);
     will-change:max-height,padding,transform,opacity;
   }
   .header__nav::before{
     content:"";position:absolute;left:5%;right:5%;top:0;height:1px;
-    background:rgba(168,137,74,.5);opacity:0;transition:opacity var(--duration-med) var(--ease-ceremonial);pointer-events:none;
+    background:rgba(168,137,74,.5);opacity:0;transition:opacity var(--duration-med) var(--ease-ceremonial);
+    pointer-events:none;
   }
   .header__nav-link{padding:.75rem 0;}
 
+  /* OPEN: make visibility immediate (no delay), while everything else animates */
   .header.header--open .header__nav{
     max-height:80vh;padding-top:var(--space-md);padding-bottom:var(--space-md);
     visibility:visible;transform:scaleY(1);opacity:1;
+
+    /* override the closed-state visibility delay to 0s for instant reveal */
     transition:
       max-height var(--menu-speed) var(--ease-ceremonial),
       padding   var(--menu-speed) var(--ease-ceremonial),
@@ -212,6 +236,7 @@ section{position:relative;overflow:hidden;}
 
   :root{--header-offset:84px;}
 
+  /* Footer accordion + hide top border under copyright bar */
   .footer{padding:var(--space-lg) 0;}
   .footer__grid{grid-template-columns:1fr;gap:var(--space-sm);margin-bottom:var(--space-md);}
   .footer__section{border-bottom:1px solid rgba(255,255,255,.08);padding-block:.25rem;}
@@ -231,7 +256,7 @@ section{position:relative;overflow:hidden;}
   .footer__section--open .footer__title::after{transform:rotate(135deg);}
   .footer__section--open .footer__list{max-height:320px;opacity:1;padding-bottom:.5rem;}
   .footer__link{line-height:2;}
-  .footer__bottom{border-top: 0;}
+  .footer__bottom{border-top:none;}
 }
 </style>
 </head>
@@ -241,9 +266,13 @@ section{position:relative;overflow:hidden;}
 <header class="header" aria-label="Primary">
   <nav aria-label="Primary navigation">
     <div class="header__inner">
-      <a href="#" class="header__logo">SIAM VAJRAYANA</a>
+      <a href="#" class="header__logo" aria-label="Siam Vajrayana home">
+        <svg class="header__logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="currentColor"/>
+        </svg>
+        <span>Siam Vajrayana</span>
+      </a>
 
-      <!-- Language toggle moved INTO the nav as the last item -->
       <ul class="header__nav" id="primary-nav" role="list" aria-hidden="true">
         <li class="header__nav-item"><a class="header__nav-link" href="#experience">Experience</a></li>
         <li class="header__nav-item"><a class="header__nav-link" href="#calendar">Calendar</a></li>
@@ -251,7 +280,7 @@ section{position:relative;overflow:hidden;}
         <li class="header__nav-item"><a class="header__nav-link" href="#membership">Membership</a></li>
         <li class="header__nav-item"><a class="header__nav-link" href="#journal">Journal</a></li>
         <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
-        <li class="header__nav-item">
+        <li class="header__nav-item header__nav-item--lang">
           <button class="header__lang" aria-label="Switch language">EN</button>
         </li>
       </ul>
@@ -352,12 +381,19 @@ section{position:relative;overflow:hidden;}
     </div>
 
     <div class="footer__bottom">
-      <p>© 2025 Sacred Vajrayana Foundation. A sanctuary of Thai Vajrayana wisdom.</p>
+      <p>© 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhism wisdom.</p>
     </div>
   </div>
 </footer>
 
 <script>
+/* Prevent restoring previous scroll position on reload */
+(function(){
+  if ('scrollRestoration' in history){
+    history.scrollRestoration = 'manual';
+  }
+})();
+
 /* Header menu toggle */
 (function () {
   const header = document.querySelector('.header');
@@ -369,7 +405,7 @@ section{position:relative;overflow:hidden;}
     header.classList.add('header--open');
     btn.setAttribute('aria-expanded','true');
     panel.setAttribute('aria-hidden','false');
-    const firstLink = panel.querySelector('a,button');
+    const firstLink = panel.querySelector('a');
     if (firstLink) firstLink.focus({preventScroll:true});
   };
 
@@ -384,21 +420,15 @@ section{position:relative;overflow:hidden;}
     expanded ? closeMenu() : openMenu();
   });
 
-  panel.addEventListener('click', (e) => {
-    if (e.target.closest('a')) closeMenu();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
+  panel.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 })();
 
-/* Focus trap for open menu */
+/* Focus trap when menu is open */
 (function () {
   const header = document.querySelector('.header');
-  const btn    = document.querySelector('.header__menu-toggle');
   const panel  = document.getElementById('primary-nav');
-  if (!header || !btn || !panel) return;
+  if (!header || !panel) return;
 
   function onKeydown(e){
     if (!header.classList.contains('header--open') || e.key !== 'Tab') return;
@@ -429,7 +459,8 @@ section{position:relative;overflow:hidden;}
       const title = sec.querySelector('.footer__title');
       if (!title) return;
 
-      setExpanded(sec, false);
+      setExpanded(sec, false); // collapsed by default
+
       const toggle = () => setExpanded(sec, title.getAttribute('aria-expanded') !== 'true');
 
       if (title._footerClick){ title.removeEventListener('click', title._footerClick); }
@@ -447,7 +478,7 @@ section{position:relative;overflow:hidden;}
     sections.forEach(sec => {
       const title = sec.querySelector('.footer__title');
       if (!title) return;
-      setExpanded(sec, true);
+      setExpanded(sec, true); // expanded on desktop
       if (title._footerClick){ title.removeEventListener('click', title._footerClick); title._footerClick = null; }
       if (title._footerKey){   title.removeEventListener('keydown', title._footerKey); title._footerKey = null; }
     });
