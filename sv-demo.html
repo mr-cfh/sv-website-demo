@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siam Vajrayana</title>
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="css/main-styles.css" />
+</head>
+
+<body>
+  <!-- ────────────────────────────────────────────────────────────
+       HEADER / NAV
+       - To add/remove nav items: edit <li> within .header__nav
+       - To change the language button: .header__lang
+       - Breakpoint defined at 768px in CSS
+     ──────────────────────────────────────────────────────────── -->
+  <header class="header" aria-label="Primary">
+    <nav aria-label="Primary navigation">
+      <div class="header__inner">
+        <a href="#" class="header__logo">SIAM VAJRAYANA</a>
+
+        <ul class="header__nav" id="primary-nav" role="list" aria-hidden="true">
+          <li class="header__nav-item"><a class="header__nav-link" href="#experience">Experience</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#calendar">Calendar</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#art">Art</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#membership">Membership</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#journal">Journal</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="header__lang" aria-label="Switch language">EN</button>
+
+        <button
+          class="header__menu-toggle"
+          aria-label="Open menu"
+          aria-controls="primary-nav"
+          aria-expanded="false">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6"  x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO / PARALLAX SECTIONS (swap images as needed) -->
+    <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape">
+      <div class="caption"><span class="caption-text">SCROLL DOWN</span></div>
+    </div>
+
+    <section class="section section--light" aria-labelledby="parallax-demo-title">
+      <h3 id="parallax-demo-title" style="text-align:center;">Parallax Demo</h3>
+      <p>Parallax scrolling is a web site trend where the background content is moved at a different
+        speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec
+        libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a,
+        magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis.
+        Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et
+        vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt
+        mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at
+        quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione
+        interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue
+        etiam maecenas, porta porttitor placerat leo.</p>
+    </section>
+
+    <div class="bgimg bgimg-2" role="img" aria-label="Forest landscape">
+      <div class="caption"><span class="caption-badge">LESS HEIGHT</span></div>
+    </div>
+
+    <section class="section section--dark">
+      <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+    </section>
+
+    <div class="bgimg bgimg-3" role="img" aria-label="Beach landscape">
+      <div class="caption"><span class="caption-badge">SCROLL UP</span></div>
+    </div>
+
+    <section class="section section--dark">
+      <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+    </section>
+
+    <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape again">
+      <div class="caption"><span class="caption-badge">COOL!</span></div>
+    </div>
+  </main>
+
+  <!-- ────────────────────────────────────────────────────────────
+       FOOTER
+       - Desktop: grid
+       - Mobile: accordion (JS toggles .footer__section--open)
+     ──────────────────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer__grid">
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Experience</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#healing">Healing</a></li>
+            <li><a class="footer__link" href="#journey">Journey</a></li>
+            <li><a class="footer__link" href="#circle">Circle</a></li>
+          </ul>
+        </section>
+
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Connect</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#calendar">Calendar</a></li>
+            <li><a class="footer__link" href="#membership">Membership</a></li>
+            <li><a class="footer__link" href="#contact">Contact</a></li>
+          </ul>
+        </section>
+
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Foundation</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#about">Origins &amp; Lineage</a></li>
+            <li><a class="footer__link" href="#journal">Journal</a></li>
+            <li><a class="footer__link" href="#privacy">Privacy &amp; Ethics</a></li>
+          </ul>
+        </section>
+
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Visit</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#location">Location</a></li>
+            <li><a class="footer__link" href="#art">Sacred Art Gallery</a></li>
+            <li><a class="footer__link" href="#concierge">VIP Services</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2025 Sacred Vajrayana Foundation. A sanctuary of Thai Vajrayana wisdom.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site scripts -->
+  <script src="js/main.js" defer></script>
+</body>
+</html>

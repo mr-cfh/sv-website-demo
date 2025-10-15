@@ -1,0 +1,299 @@
+/* ──────────────────────────────────────────────────────────────
+   1) DESIGN TOKENS
+   - Central place for colors, spacing, type, motion
+   - Edit here to theme the whole site
+   ────────────────────────────────────────────────────────────── */
+:root{
+  /* Colors (brand) */
+  --sv-blue-900:#0F2A5A;
+  --sv-blue-700:#2E5A78;
+  --sv-blue-300:#A0C6E1;
+  --gilded-gold:#A8894A;
+
+  /* Colors (base) */
+  --pure-white:#FFFFFF;
+  --text-primary:#1A1A1A;
+
+  /* Type */
+  --font-display:'Outfit',-apple-system,sans-serif;
+  --font-body:'Inter',-apple-system,sans-serif;
+
+  /* Spacing scale */
+  --space-xs:.5rem;
+  --space-sm:1rem;
+  --space-md:1.5rem;
+  --space-lg:2.5rem;
+  --space-xl:4rem;
+
+  /* Motion / easing */
+  --ease-ceremonial:cubic-bezier(0.16,1,0.3,1);
+  --duration-fast:200ms;
+  --duration-med:350ms;
+
+  /* Components */
+  --menu-speed:550ms;     /* mobile menu expand/collapse duration */
+  --header-offset:96px;   /* anchor offset for fixed header (desktop) */
+}
+
+/* ──────────────────────────────────────────────────────────────
+   2) RESET & BASE
+   ────────────────────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+  /* Optional: reserve scrollbar space to avoid layout shift on some platforms
+     Uncomment if you want it globally
+     scrollbar-gutter: stable both-edges;
+  */
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  html{scroll-behavior:auto;}
+}
+body{
+  min-height:100%;
+  font-family:var(--font-body);
+  background:var(--pure-white);
+  color:var(--text-primary);
+  line-height:1.6;
+  font-size:clamp(1rem,.95rem + .25vw,1.125rem);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Anchor jump fix: ensure in-page links don’t hide behind the fixed header */
+:target{scroll-margin-top:var(--header-offset);}
+
+/* ──────────────────────────────────────────────────────────────
+   3) TYPOGRAPHY UTILITIES
+   ────────────────────────────────────────────────────────────── */
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  line-height:1.2;
+}
+h1{font-size:clamp(2.5rem,4vw + 1rem,4.5rem);letter-spacing:-.02em;}
+h2{font-size:clamp(2rem,3vw + .5rem,3.5rem);letter-spacing:-.01em;}
+h3{font-size:clamp(1.25rem,2vw,1.5rem);letter-spacing:.05em;text-transform:uppercase;color:#111;}
+
+/* ──────────────────────────────────────────────────────────────
+   4) LAYOUT HELPERS
+   ────────────────────────────────────────────────────────────── */
+.container{width:90%;max-width:1400px;margin:0 auto;padding:0 var(--space-md);}
+section{position:relative;overflow:hidden;}
+.section{text-align:justify;padding:50px 80px;}
+.section--light{background:var(--pure-white);color:#777;}
+.section--dark{background:#282E34;color:#ddd;}
+
+/* ──────────────────────────────────────────────────────────────
+   5) HEADER & NAV  (.header__*)
+   - Collapsed height matches desktop on mobile
+   - On mobile, the nav panel expands inside the header, so the
+     gold baseline is shared in both states
+   ────────────────────────────────────────────────────────────── */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:1000;
+  background:var(--pure-white);
+  border-bottom:2px solid var(--gilded-gold);
+  box-shadow:0 2px 12px rgba(15,42,90,.04);
+  transition:transform var(--duration-med) var(--ease-ceremonial);
+}
+.header__inner{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:var(--space-md) 0;
+  max-width:1400px;margin:0 auto;width:90%;
+}
+.header__logo{
+  font-family:var(--font-display);font-size:1.25rem;font-weight:600;
+  color:var(--sv-blue-900);text-decoration:none;letter-spacing:.08em;
+  position:relative;padding-left:2.5rem;
+}
+.header__logo::before{
+  content:'◆';position:absolute;left:0;color:var(--gilded-gold);
+  font-size:1.5rem;line-height:1;
+}
+
+/* Desktop nav */
+.header__nav{
+  display:flex;
+  gap:var(--space-lg);
+  list-style:none;
+}
+.header__nav-link{
+  color:var(--sv-blue-700);
+  text-decoration:none;
+  font-size:.95rem;
+  font-weight:500;
+  position:relative;
+  padding:.5rem 0;
+  transition:color var(--duration-fast) var(--ease-ceremonial);
+}
+.header__nav-link::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gilded-gold);
+  transition:width var(--duration-med) var(--ease-ceremonial);
+}
+.header__nav-link:hover{color:var(--sv-blue-900);}
+.header__nav-link:hover::after{width:100%;}
+.header__lang{
+  background:var(--pure-white);border:2px solid var(--gilded-gold);
+  color:var(--sv-blue-900);padding:.5rem 1.25rem;border-radius:2px;
+  cursor:pointer;font-size:.875rem;font-weight:600;letter-spacing:.05em;
+  transition:all var(--duration-fast) var(--ease-ceremonial);
+}
+.header__lang:hover{background:var(--sv-blue-900);color:#fff;border-color:var(--sv-blue-900);}
+.header__lang:focus-visible{outline:2px solid var(--gilded-gold);outline-offset:4px;}
+.header__menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--sv-blue-900);}
+
+/* ──────────────────────────────────────────────────────────────
+   6) PARALLAX
+   ────────────────────────────────────────────────────────────── */
+.bgimg{position:relative;opacity:.65;background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;}
+@supports (-webkit-overflow-scrolling:touch){.bgimg{background-attachment:scroll;}}
+.bgimg-1{background-image:url("https://www.w3schools.com/howto/img_parallax.jpg");min-height:100vh;}
+.bgimg-2{background-image:url("https://www.w3schools.com/howto/img_parallax2.jpg");min-height:400px;}
+.bgimg-3{background-image:url("https://www.w3schools.com/howto/img_parallax3.jpg");min-height:400px;}
+.caption{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center;color:#fff;}
+.caption-text,.caption-badge{
+  background-color:rgba(17,17,17,.8);color:#fff;padding:20px 30px;letter-spacing:8px;text-transform:uppercase;
+  font-weight:300;border:2px solid #fff;backdrop-filter:blur(5px);animation:fadeInUp 600ms var(--ease-ceremonial) both;
+}
+.caption-text{font-size:clamp(18px,4vw,28px);}
+.caption-badge{font-size:25px;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ──────────────────────────────────────────────────────────────
+   7) FOOTER
+   - Desktop: 4-column grid (auto-fit)
+   - Mobile: accessible accordions (JS toggles .footer__section--open)
+   ────────────────────────────────────────────────────────────── */
+.footer{
+  background:var(--sv-blue-900);color:#fff;
+  padding:var(--space-xl) 0 var(--space-lg);
+  border-top:3px solid var(--gilded-gold);
+}
+.footer__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:var(--space-lg);
+  margin-bottom:var(--space-lg);
+}
+.footer__title{
+  color:var(--gilded-gold);
+  margin-bottom:var(--space-sm);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.footer__list{list-style:none;}
+.footer__link{
+  color:var(--sv-blue-300);
+  text-decoration:none;
+  transition:color var(--duration-fast) var(--ease-ceremonial);
+  line-height:2.2;
+  display:inline-block;
+}
+.footer__link:hover{color:#fff;transform:translateX(4px);}
+.footer__bottom{
+  border-top:1px solid var(--sv-blue-700);
+  padding-top:var(--space-md);
+  text-align:center;
+  color:var(--sv-blue-300);
+  font-size:.875rem;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   8) RESPONSIVE (≤ 768px)
+   ────────────────────────────────────────────────────────────── */
+@media (max-width:768px){
+  /* Header: keep collapsed height visually similar to desktop */
+  .header__menu-toggle{display:block;}
+  .header{overflow:hidden;}                 /* contain the expanding panel */
+  .header__inner{
+    padding:var(--space-sm) 0;
+    display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm);
+  }
+
+  /* Mobile nav panel */
+  .header__nav{
+    order:2;
+    width:100%;
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-md);
+
+    background:var(--pure-white);
+    padding:0 var(--space-lg);             /* horizontal padding stays; vertical animates */
+
+    /* closed state (space-free) */
+    max-height:0;
+    overflow:hidden;
+    visibility:hidden;
+    transform-origin:top;
+    transform:scaleY(0);
+    opacity:0;
+
+    transition:
+      max-height var(--menu-speed) var(--ease-ceremonial),
+      padding   var(--menu-speed) var(--ease-ceremonial),
+      transform var(--menu-speed) var(--ease-ceremonial),
+      opacity   var(--menu-speed) var(--ease-ceremonial),
+      visibility 0s linear var(--menu-speed);
+
+    will-change:max-height,padding,transform,opacity;
+  }
+  /* subtle divider between top row and expanding panel */
+  .header__nav::before{
+    content:"";position:absolute;left:5%;right:5%;top:0;height:1px;
+    background:rgba(168,137,74,.5);opacity:0;transition:opacity var(--duration-med) var(--ease-ceremonial);
+    pointer-events:none;
+  }
+  /* link tap targets */
+  .header__nav-link{padding:.75rem 0;}
+
+  /* OPEN state triggers */
+  .header.header--open .header__nav{
+    max-height:80vh;
+    padding-top:var(--space-md);
+    padding-bottom:var(--space-md);
+    visibility:visible;
+    transform:scaleY(1);
+    opacity:1;
+    transition:
+      max-height var(--menu-speed) var(--ease-ceremonial),
+      padding   var(--menu-speed) var(--ease-ceremonial),
+      transform var(--menu-speed) var(--ease-ceremonial),
+      opacity   var(--menu-speed) var(--ease-ceremonial),
+      visibility 0s linear;
+  }
+  .header.header--open .header__nav::before{opacity:1;}
+
+  /* Mobile anchor offset (if header visual height differs from desktop) */
+  :root{--header-offset:84px;}
+
+  /* Footer → accordion */
+  .footer{padding:var(--space-lg) 0;}
+  .footer__grid{grid-template-columns:1fr;gap:var(--space-sm);margin-bottom:var(--space-md);}
+  .footer__section{border-bottom:1px solid rgba(255,255,255,.08);padding-block:.25rem;}
+  .footer__title{
+    margin:0;padding:.875rem .25rem;font-size:.95rem;letter-spacing:.07em;
+    display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;
+  }
+  .footer__title::after{
+    content:"";width:10px;height:10px;border-right:2px solid var(--gilded-gold);border-bottom:2px solid var(--gilded-gold);
+    transform:rotate(-45deg);transition:transform var(--duration-med) var(--ease-ceremonial);margin-left:.5rem;
+  }
+  .footer__list{
+    max-height:0;overflow:hidden;opacity:0;
+    transition:max-height 400ms var(--ease-ceremonial),opacity 300ms var(--ease-ceremonial);
+    padding:0 .25rem;
+  }
+  .footer__section--open .footer__title::after{transform:rotate(135deg);}
+  .footer__section--open .footer__list{max-height:320px;opacity:1;padding-bottom:.5rem;}
+  .footer__link{line-height:2;}
+}
