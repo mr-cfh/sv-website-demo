@@ -1,477 +1,794 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Siam Vajrayana</title>
-      <style>
-         /* ──────────────────────────────────────────────────────────────
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Siam Vajrayana</title>
+    <style>
+      /* ──────────────────────────────────────────────────────────────
          1) DESIGN TOKENS
          ────────────────────────────────────────────────────────────── */
-         :root{
-         --sv-blue-900:#0F2A5A;
-         --sv-blue-700:#2E5A78;
-         --sv-blue-300:#A0C6E1;
-         --gilded-gold:#FFC34B;
-         --pure-white:#FFFFFF;
-         --text-primary:#1A1A1A;
-         --font-display:'Outfit',-apple-system,sans-serif;
-         --font-body:'Inter',-apple-system,sans-serif;
-         --space-xs:.5rem;
-         --space-sm:1rem;
-         --space-md:1.5rem;
-         --space-lg:2.5rem;
-         --space-xl:4rem;
-         --ease-ceremonial:cubic-bezier(0.16,1,0.3,1);
-         --duration-fast:200ms;
-         --duration-med:350ms;
-         --menu-speed:550ms;
-         --header-offset:96px;
-         --logo-gap:1rem;
-         /* default (closed) menu transitions – keep visibility hidden after the animation */
-         --menu-panel-transitions:
-         max-height var(--menu-speed) var(--ease-ceremonial),
-         padding   var(--menu-speed) var(--ease-ceremonial),
-         transform var(--menu-speed) var(--ease-ceremonial),
-         opacity   var(--menu-speed) var(--ease-ceremonial),
-         visibility 0s linear var(--menu-speed);
-         }
-         /* ──────────────────────────────────────────────────────────────
+      :root{
+        --sv-blue-900:#0F2A5A;
+        --sv-blue-700:#2E5A78;
+        --sv-blue-300:#A0C6E1;
+        --gilded-gold:#FFC34B;
+        --gilded-gold-o: #A8894A;
+        --pure-white:#FFFFFF;
+        --ivory-stone: #ECE7DF;
+        --cinnabar: #9F2F2B;
+        --text-primary:#1A1A1A;
+        --font-display:'Outfit',-apple-system,sans-serif;
+        --font-body:'Inter',-apple-system,sans-serif;
+        --space-xs:.5rem;
+        --space-sm:1rem;
+        --space-md:1.5rem;
+        --space-lg:2.5rem;
+        --space-xl:4rem;
+        --space-2xl:6rem;
+        --ease-ceremonial:cubic-bezier(0.16,1,0.3,1);
+        --duration-fast:200ms;
+        --duration-med:350ms;
+        --menu-speed:550ms;
+        --header-offset:96px;
+        --logo-gap:1rem;
+        /* default (closed) menu transitions – keep visibility hidden after the animation */
+        --menu-panel-transitions:
+          max-height var(--menu-speed) var(--ease-ceremonial),
+          padding   var(--menu-speed) var(--ease-ceremonial),
+          transform var(--menu-speed) var(--ease-ceremonial),
+          opacity   var(--menu-speed) var(--ease-ceremonial),
+          visibility 0s linear var(--menu-speed);
+      }
+
+      /* ──────────────────────────────────────────────────────────────
          2) RESET & BASE
          ────────────────────────────────────────────────────────────── */
-         *{margin:0;padding:0;box-sizing:border-box;}
-         html{scroll-behavior:smooth;}
-         @media (prefers-reduced-motion:reduce){
-         *,*::before,*::after{
-         animation-duration:.01ms!important;
-         animation-iteration-count:1!important;
-         transition-duration:.01ms!important;
-         }
-         html{scroll-behavior:auto;}
-         }
-         body{
-         min-height:100%;
-         font-family:var(--font-body);
-         background:var(--pure-white);
-         color:var(--text-primary);
-         line-height:1.6;
-         font-size:clamp(1rem,.95rem + .25vw,1.125rem);
-         -webkit-font-smoothing:antialiased;
-         }
-         /* Anchor jump fix */
-         :target{scroll-margin-top:var(--header-offset);}
-         /* ──────────────────────────────────────────────────────────────
+      *{margin:0;padding:0;box-sizing:border-box;}
+      html{scroll-behavior:smooth;}
+      @media (prefers-reduced-motion:reduce){
+        *,*::before,*::after{
+          animation-duration:.01ms!important;
+          animation-iteration-count:1!important;
+          transition-duration:.01ms!important;
+        }
+        html{scroll-behavior:auto;}
+      }
+      body{
+        min-height:100%;
+        font-family:var(--font-body);
+        background:var(--pure-white);
+        color:var(--text-primary);
+        line-height:1.6;
+        font-size:clamp(1rem,.95rem + .25vw,1.125rem);
+        -webkit-font-smoothing:antialiased;
+      }
+      /* Anchor jump fix */
+      :target{scroll-margin-top:var(--header-offset);}
+
+      /* ──────────────────────────────────────────────────────────────
          3) TYPE
          ────────────────────────────────────────────────────────────── */
-         h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.2;}
-         h1{font-size:clamp(2.5rem,4vw + 1rem,4.5rem);letter-spacing:-.02em;}
-         h2{font-size:clamp(2rem,3vw + .5rem,3.5rem);letter-spacing:-.01em;}
-         h3{font-size:clamp(1.25rem,2vw,1.5rem);letter-spacing:.05em;text-transform:uppercase;color:#111;}
-         /* ──────────────────────────────────────────────────────────────
+      h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.2;}
+      h1{font-size:clamp(2.5rem,4vw + 1rem,4.5rem);letter-spacing:-.02em;}
+      h2{font-size:clamp(2rem,3vw + .5rem,3.5rem);letter-spacing:-.01em;}
+      h3{font-size:clamp(1.25rem,2vw,1.5rem);letter-spacing:.05em;text-transform:uppercase;color:#111;}
+
+      /* ──────────────────────────────────────────────────────────────
          4) LAYOUT
          ────────────────────────────────────────────────────────────── */
-         .container{width:90%;max-width:1400px;margin:0 auto;padding:0 var(--space-md);}
-         section{position:relative;overflow:hidden;}
-         .section{text-align:justify;padding:50px 80px;}
-         .section--light{background:var(--pure-white);color:#777;}
-         .section--dark{background:#282E34;color:#ddd;}
-         /* ──────────────────────────────────────────────────────────────
+      .container{width:90%;max-width:1400px;margin:0 auto;padding:0 var(--space-md);}
+      section{position:relative;overflow:hidden;}
+      .section{text-align:justify;padding:50px 80px;}
+      .section--light{background:var(--ivory-stone);color:#777;}
+      .section--dark{background:#282E34;color:#ddd;}
+
+      /* ──────────────────────────────────────────────────────────────
          5) HEADER & NAV
          ────────────────────────────────────────────────────────────── */
-         .header{
-         position:fixed;inset:0 0 auto 0;z-index:1000;
-         background:var(--pure-white);
-         border-bottom:2px solid var(--gilded-gold);
-         box-shadow:0 2px 12px rgba(15,42,90,.04);
-         transition:transform var(--duration-med) var(--ease-ceremonial);
-         }
-         .header__inner{
-         display:flex;justify-content:space-between;align-items:center;
-         padding:var(--space-md) 0;
-         max-width:1400px;margin:0 auto;width:90%;
-         }
-         /* Logo */
-         .header__logo{
-         display:inline-flex;align-items:center;gap:var(--logo-gap);
-         color:var(--sv-blue-900);font-family:var(--font-display);font-size:1.25rem;font-weight:600;
-         letter-spacing:.08em;text-decoration:none;
-         }
-         .header__logo-icon{width:20px;height:20px;display:block;color:var(--gilded-gold);}
-         /* Desktop nav */
-         .header__nav{display:flex;gap:var(--space-lg);list-style:none;}
-         .header__nav-link{
-         color:var(--sv-blue-700);text-decoration:none;font-size:.95rem;font-weight:500;position:relative;padding:.5rem 0;
-         transition:color var(--duration-fast) var(--ease-ceremonial);
-         }
-         .header__nav-link::after{
-         content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gilded-gold);
-         transition:width var(--duration-med) var(--ease-ceremonial);
-         }
-         @media (hover:hover){
-         .header__nav-link:hover{color:var(--sv-blue-900);}
-         .header__nav-link:hover::after{width:100%;}
-         }
-         /* Language button (inside nav) */
-         .header__lang{
-         background:var(--pure-white);border:2px solid var(--gilded-gold);
-         color:var(--sv-blue-900);padding:.5rem 1.25rem;border-radius:2px;
-         cursor:pointer;font-size:.875rem;font-weight:600;letter-spacing:.05em;
-         transition:all var(--duration-fast) var(--ease-ceremonial);
-         }
-         @media (hover:hover){
-         .header__lang:hover{background:var(--sv-blue-900);color:#fff;border-color:var(--sv-blue-900);}
-         }
-         .header__lang:focus-visible{outline:2px solid var(--gilded-gold);outline-offset:4px;}
-         /* Hamburger button + animated perfect "X" */
-         .header__menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--sv-blue-900);}
-         .header__menu-toggle svg{display:block;overflow:visible;}
-         .header__menu-toggle .bar{
-         stroke-linecap:round;
-         vector-effect:non-scaling-stroke;
-         /* CRITICAL: ensure transforms are calculated from the SVG viewBox center */
-         transform-box:view-box;
-         transform-origin:12px 12px;
-         transition:
-         transform var(--duration-med) var(--ease-ceremonial),
-         opacity   var(--duration-med) var(--ease-ceremonial);
-         }
-         /* Open state → bars rotate around center and cross exactly at (12,12) */
-         .header.header--open .header__menu-toggle .bar--top{ transform: translateY(6px) translateX(-6px) rotate(45deg); }
-         .header.header--open .header__menu-toggle .bar--mid{ opacity:0; }
-         .header.header--open .header__menu-toggle .bar--bot{ transform: translateY(-6px) translateX(-6px) rotate(-45deg); }
-         /* ──────────────────────────────────────────────────────────────
-         6) PARALLAX
+      .header{
+        position:fixed;inset:0 0 auto 0;z-index:1000;
+        background:var(--pure-white);
+        border-bottom:2px solid var(--gilded-gold);
+        box-shadow:0 2px 12px rgba(15,42,90,.04);
+        transition:transform var(--duration-med) var(--ease-ceremonial);
+      }
+      .header__inner{
+        display:flex;justify-content:space-between;align-items:center;
+        padding:var(--space-md) 0;
+        max-width:1400px;margin:0 auto;width:90%;
+      }
+      /* Logo */
+      .header__logo{
+        display:inline-flex;align-items:center;gap:var(--logo-gap);
+        color:var(--sv-blue-900);font-family:var(--font-display);font-size:1.25rem;font-weight:600;
+        letter-spacing:.08em;text-decoration:none;
+      }
+      .header__logo-icon{width:20px;height:20px;display:block;color:var(--gilded-gold);}
+      /* Desktop nav */
+      .header__nav{display:flex;gap:var(--space-lg);list-style:none;}
+      .header__nav-link{
+        color:var(--sv-blue-700);text-decoration:none;font-size:.95rem;font-weight:500;position:relative;padding:.5rem 0;
+        transition:color var(--duration-fast) var(--ease-ceremonial);
+      }
+      .header__nav-link::after{
+        content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gilded-gold);
+        transition:width var(--duration-med) var(--ease-ceremonial);
+      }
+      @media (hover:hover){
+        .header__nav-link:hover{color:var(--sv-blue-900);}
+        .header__nav-link:hover::after{width:100%;}
+      }
+      /* Language button (inside nav) */
+      .header__lang{
+        background:var(--pure-white);border:2px solid var(--gilded-gold);
+        color:var(--sv-blue-900);padding:.5rem 1.25rem;border-radius:2px;
+        cursor:pointer;font-size:.875rem;font-weight:600;letter-spacing:.05em;
+        transition:all var(--duration-fast) var(--ease-ceremonial);
+      }
+      @media (hover:hover){
+        .header__lang:hover{background:var(--sv-blue-900);color:#fff;border-color:var(--sv-blue-900);}
+      }
+      .header__lang:focus-visible{outline:2px solid var(--gilded-gold);outline-offset:4px;}
+
+      /* Hamburger button + animated perfect "X" */
+      .header__menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--sv-blue-900);}
+      .header__menu-toggle svg{display:block;overflow:visible;}
+      .header__menu-toggle .bar{
+        stroke-linecap:round;
+        vector-effect:non-scaling-stroke;
+        /* ensure transforms are calculated from the SVG viewBox center */
+        transform-box:view-box;
+        transform-origin:12px 12px;
+        transition:
+          transform var(--duration-med) var(--ease-ceremonial),
+          opacity   var(--duration-med) var(--ease-ceremonial);
+      }
+      /* Open state → bars rotate around center and cross exactly at (12,12) */
+      .header.header--open .header__menu-toggle .bar--top{ opacity:0;}
+      .header.header--open .header__menu-toggle .bar--mid-1{ transform: translateY(4px) translateX(0px) rotate(45deg); }
+      .header.header--open .header__menu-toggle .bar--mid-2{ transform: translateY(0px) translateX(0px) rotate(-45deg); }
+      .header.header--open .header__menu-toggle .bar--bot{ opacity:0; }
+
+      /* ──────────────────────────────────────────────────────────────
+         6) PARALLAX / BACKGROUND SECTIONS
          ────────────────────────────────────────────────────────────── */
-         .bgimg{
-         position:relative;opacity:.65;background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;
-         content-visibility:auto;contain-intrinsic-size:100vh;
-         }
-         @supports (-webkit-overflow-scrolling:touch){.bgimg{background-attachment:scroll;}}
-         .bgimg-1{background-image:url("img/sv-light.png");min-height:100vh;}
-         .bgimg-2{background-image:url("img/sv-inside.png");min-height:500px;}
-         .bgimg-3{background-image:url("img/sv-dark.png");min-height:500px;}
-         .bgimg-4{background-image:url("img/16-Arhats-and-Shakyamuni-Buddha.jpg");min-height:500px;}
-         .caption{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center;color:#fff;}
-         .caption-text,.caption-badge{
-         background-color:rgba(17,17,17,.8);color:#fff;padding:20px 30px;letter-spacing:8px;text-transform:uppercase;
-         font-weight:300;border:2px solid #fff;backdrop-filter:blur(5px);animation:fadeInUp 600ms var(--ease-ceremonial) both;
-         }
-         .caption-text{font-size:clamp(18px,4vw,28px);}
-         .caption-badge{font-size:25px;}
-         @keyframes fadeInUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-         /* ──────────────────────────────────────────────────────────────
+
+      /* CHANGED: remove opacity from .bgimg so it doesn't affect children;
+         use an overlay pseudo-element instead */
+      .bgimg{
+        position:relative;
+        /* removed: opacity:.65; */
+        background-attachment:fixed;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+
+        /* perf hints (optional) */
+        content-visibility:auto;
+        contain-intrinsic-size:100vh;
+
+        /* ensure overlay and children stack correctly */
+        isolation:isolate;
+      }
+      /* dimming overlay that doesn't affect inner content */
+      .bgimg::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:rgba(0,0,0,.35); /* adjust darkness as needed */
+        z-index:0;
+      }
+      /* keep inner content above the overlay */
+      .bgimg > *{
+        position:relative;
+        z-index:1;
+      }
+
+      @supports (-webkit-overflow-scrolling:touch){.bgimg{background-attachment:scroll;}}
+      .bgimg-1{background-image:url("img/sv-light.png");min-height:100vh;}
+      .bgimg-2{background-image:url("img/sv-inside.png");min-height:500px;}
+      .bgimg-3{background-image:url("img/sv-dark.png");min-height:500px;}
+      .bgimg-4{background-image:url("img/16-Arhats-and-Shakyamuni-Buddha.jpg");min-height:500px;}
+
+      .caption{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center;color:#fff;}
+      .caption-text,.caption-badge{
+        background-color:rgba(17,17,17,.8);color:#fff;padding:20px 30px;letter-spacing:8px;text-transform:uppercase;
+        font-weight:300;border:2px solid #fff;backdrop-filter:blur(5px);animation:fadeInUp 600ms var(--ease-ceremonial) both;
+      }
+      .caption-text{font-size:clamp(18px,4vw,28px);}
+      .caption-badge{font-size:25px;}
+      @keyframes fadeInUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+
+      /* ===== BUTTONS ===== */
+      .btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 2px;
+        transition: all var(--duration-med) var(--ease-ceremonial);
+        border: 2px solid transparent;
+        font-size: 1rem;
+        cursor: pointer;
+        min-width: 200px;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+      .btn-primary {
+        background: var(--pure-white);
+        color: var(--sv-blue-900);
+        border-color: var(--gilded-gold);
+      }
+      .btn-primary:hover {
+        background: var(--gilded-gold);
+        color: var(--pure-white);
+        border-color: var(--gilded-gold);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(168, 137, 74, 0.3);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--pure-white);
+        border-color: var(--pure-white);
+      }
+      .btn-secondary:hover {
+        background: var(--pure-white);
+        color: var(--sv-blue-900);
+        border-color: var(--pure-white);
+      }
+      .btn:focus-visible {
+        outline: 3px solid var(--gilded-gold);
+        outline-offset: 4px;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: linear-gradient(180deg, 
+          var(--sv-blue-900) 0%, 
+          var(--sv-blue-700) 50%,
+          var(--sv-blue-500) 100%
+        );
+        overflow: hidden;
+      }  
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        color: var(--pure-white);
+        max-width: 900px;
+        padding: var(--space-2xl) var(--space-md);
+      }
+      .hero h1 { margin-bottom: var(--space-md); opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .3s forwards; text-shadow:0 2px 12px rgba(0,0,0,.2);}
+      .hero .subline { margin-bottom: var(--space-xl); opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .6s forwards; }
+      .cta-group { display:flex; gap:var(--space-md); justify-content:center; flex-wrap:wrap; opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .9s forwards; }
+
+      /* ===== EXPERIENCE SECTION (Pure White) ===== */
+        .experience {
+            padding: var(--space-2xl) 0;
+            background: var(--ivory-stone);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .section-header h2 {
+            color: var(--sv-blue-900);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .experience-card {
+            background: var(--pure-white);
+            border: 3px solid var(--gilded-gold);
+            padding: var(--space-xl) var(--space-lg);
+            position: relative;
+            transition: all var(--duration-med) var(--ease-ceremonial);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 8px rgba(168, 137, 74, 0.08);
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border: 3px solid var(--sv-blue-500);
+            opacity: 0;
+            transition: opacity var(--duration-med) var(--ease-ceremonial);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(15, 42, 90, 0.12);
+            border-color: var(--sv-blue-500);
+        }
+        
+        .experience-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: var(--space-md);
+            color: var(--gilded-gold);
+            stroke-width: 2;
+        }
+        
+        .experience-card h3 {
+            color: var(--sv-blue-900);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .experience-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        
+        .card-link {
+            color: var(--sv-blue-700);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card-link::after {
+            content: '→';
+            transition: transform var(--duration-fast) var(--ease-ceremonial);
+        }
+        
+        .experience-card:hover .card-link {
+            color: var(--gilded-gold);
+        }
+        
+        .experience-card:hover .card-link::after {
+            transform: translateX(6px);
+        }
+
+      /* ===== FRIEZE DIVIDER ===== */
+      .frieze {
+        height: 3px;
+        background: linear-gradient(90deg, 
+          transparent 0%, 
+          var(--gilded-gold) 15%, 
+          var(--gilded-gold) 85%, 
+          transparent 100%
+        );
+        margin: var(--space-xl) auto;
+        max-width: 800px;
+        position: relative;
+        z-index: 99;
+      }
+      .frieze::before,
+      .frieze::after {
+        content: '◆';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gilded-gold);
+        font-size: 0.75rem;
+      }
+      .frieze::before { left: 10%; }
+      .frieze::after { right: 10%; }
+
+      /* ──────────────────────────────────────────────────────────────
          7) FOOTER
          ────────────────────────────────────────────────────────────── */
-         .footer{
-         background:var(--sv-blue-900);color:#fff;
-         padding:var(--space-xl) 0 var(--space-lg);
-         border-top:3px solid var(--gilded-gold);
-         }
-         .footer__grid{
-         display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-         gap:0;margin-bottom:var(--space-lg);
-         }
-         .footer__title{
-         color:var(--gilded-gold);margin-bottom:var(--space-sm);
-         font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-         }
-         .footer__list{list-style:none;}
-         .footer__link{
-         color:var(--sv-blue-300);text-decoration:none;line-height:2.2;display:inline-block;
-         transition:color var(--duration-fast) var(--ease-ceremonial);
-         }
-         @media (hover:hover){
-         .footer__link:hover{color:#fff;transform:translateX(4px);}
-         }
-         .footer__bottom{
-         border-top:1px solid var(--sv-blue-700);
-         padding-top:var(--space-md);
-         text-align:center;
-         color:var(--sv-blue-300);
-         font-size:.875rem;
-         }
-         /* ──────────────────────────────────────────────────────────────
+      .footer{
+        background:var(--sv-blue-900);color:#fff;
+        padding:var(--space-xl) 0 var(--space-lg);
+        border-top:3px solid var(--gilded-gold);
+      }
+      .footer__grid{
+        display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:0;margin-bottom:var(--space-lg);
+      }
+      .footer__title{
+        color:var(--gilded-gold);margin-bottom:var(--space-sm);
+        font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      }
+      .footer__list{list-style:none;}
+      .footer__link{
+        color:var(--sv-blue-300);text-decoration:none;line-height:2.2;display:inline-block;
+        transition:color var(--duration-fast) var(--ease-ceremonial);
+      }
+      @media (hover:hover){
+        .footer__link:hover{color:#fff;transform:translateX(4px);}
+      }
+      .footer__bottom{
+        border-top:1px solid var(--sv-blue-700);
+        padding-top:var(--space-md);
+        text-align:center;
+        color:var(--sv-blue-300);
+        font-size:.875rem;
+      }
+
+      /* ──────────────────────────────────────────────────────────────
          8) RESPONSIVE (≤ 768px)
          ────────────────────────────────────────────────────────────── */
-         @media (max-width:768px){
-         .header__menu-toggle{display:block;}
-         .header{overflow:hidden;}
-         /* Keep bar compact when collapsed; remove vertical gap created by hidden nav */
-         .header__inner{
-         padding:var(--space-sm) 0;
-         display:flex;
-         flex-wrap:wrap;
-         align-items:center;
-         column-gap:var(--space-sm);
-         row-gap:0; /* no extra vertical space when nav is hidden */
-         }
-         .header.header--open .header__inner{ row-gap:var(--space-sm); }
-         /* Mobile nav panel (closed) */
-         .header__nav{
-         order:2;width:100%;position:relative;
-         display:flex;flex-direction:column;gap:var(--space-md);
-         background:var(--pure-white);
-         padding:0 var(--space-lg);
-         max-height:0;overflow:hidden;visibility:hidden;transform-origin:top;transform:scaleY(0);opacity:0;
-         transition: var(--menu-panel-transitions);
-         will-change:max-height,padding,transform,opacity;
-         }
-         .header__nav::before{
-         content:"";position:absolute;left:5%;right:5%;top:0;height:1px;
-         background:rgba(168,137,74,.5);opacity:0;transition:opacity var(--duration-med) var(--ease-ceremonial);
-         pointer-events:none;
-         }
-         .header__nav-link{padding:.75rem 0;}
-         /* OPEN: instant visibility; other props animate */
-         .header.header--open .header__nav{
-         max-height:80vh;padding-top:var(--space-md);padding-bottom:var(--space-md);
-         visibility:visible;transform:scaleY(1);opacity:1;
-         transition:
-         max-height var(--menu-speed) var(--ease-ceremonial),
-         padding   var(--menu-speed) var(--ease-ceremonial),
-         transform var(--menu-speed) var(--ease-ceremonial),
-         opacity   var(--menu-speed) var(--ease-ceremonial),
-         visibility 0s linear;
-         }
-         .header.header--open .header__nav::before{opacity:1;}
-         :root{--header-offset:84px;}
-         /* Footer accordion + hide top border under copyright bar */
-         .footer{padding:var(--space-lg) 0;}
-         .footer__grid{grid-template-columns:1fr;gap:var(--space-sm);margin-bottom:var(--space-md);}
-         .footer__section{border-bottom:1px solid rgba(255,255,255,.08);padding-block:.25rem;}
-         .footer__title{
-         margin:0;padding:.875rem .25rem;font-size:.95rem;letter-spacing:.07em;
-         display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;
-         }
-         .footer__title::after{
-         content:"";width:10px;height:10px;border-right:2px solid var(--gilded-gold);border-bottom:2px solid var(--gilded-gold);
-         transform:rotate(-45deg);transition:transform var(--duration-med) var(--ease-ceremonial);margin-left:.5rem;
-         }
-         .footer__list{
-         max-height:0;overflow:hidden;opacity:0;
-         transition:max-height 400ms var(--ease-ceremonial),opacity 300ms var(--ease-ceremonial);
-         padding:0 .25rem;
-         }
-         .footer__section--open .footer__title::after{transform:rotate(135deg);}
-         .footer__section--open .footer__list{max-height:320px;opacity:1;padding-bottom:.5rem;}
-         .footer__link{line-height:2;}
-         .footer__bottom{border-top:none;}
-         }
-      </style>
-   </head>
-   <body>
-      <header class="header" aria-label="Primary">
-         <nav aria-label="Primary navigation">
-            <div class="header__inner">
-               <a href="#" class="header__logo" aria-label="Siam Vajrayana home">
-                  <svg class="header__logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                     <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="currentColor"/>
-                  </svg>
-                  <span>Siam Vajrayana</span>
-               </a>
-               <ul class="header__nav" id="primary-nav" role="list" aria-hidden="true">
-                  <li class="header__nav-item"><a class="header__nav-link" href="#experience">Experience</a></li>
-                  <li class="header__nav-item"><a class="header__nav-link" href="#calendar">Calendar</a></li>
-                  <li class="header__nav-item"><a class="header__nav-link" href="#art">Art</a></li>
-                  <li class="header__nav-item"><a class="header__nav-link" href="#membership">Membership</a></li>
-                  <li class="header__nav-item"><a class="header__nav-link" href="#journal">Journal</a></li>
-                  <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
-                  <li class="header__nav-item header__nav-item--lang">
-                     <button class="header__lang" aria-label="Switch language">EN</button>
-                  </li>
-               </ul>
-               <button
-                  class="header__menu-toggle"
-                  aria-label="Open menu"
-                  aria-controls="primary-nav"
-                  aria-expanded="false">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                     <!-- Bars positioned at y=6/12/18; transforms use viewBox center (12,12) -->
-                     <line class="bar bar--top" x1="-2" y1="6"  x2="21" y2="6"></line>
-                     <line class="bar bar--mid" x1="-2" y1="12" x2="21" y2="12"></line>
-                     <line class="bar bar--bot" x1="-2" y1="18" x2="21" y2="18"></line>
-                  </svg>
-               </button>
+      @media (max-width:768px){
+        .header__menu-toggle{display:block;}
+        .header{overflow:hidden;}
+        /* Keep bar compact when collapsed; remove vertical gap created by hidden nav */
+        .header__inner{
+          padding:var(--space-sm) 0;
+          display:flex;
+          flex-wrap:wrap;
+          align-items:center;
+          column-gap:var(--space-sm);
+          row-gap:0;
+        }
+        .header.header--open .header__inner{ row-gap:var(--space-sm); }
+
+        /* Mobile nav panel (closed) */
+        .header__nav{
+          order:2;width:100%;position:relative;
+          display:flex;flex-direction:column;gap:var(--space-md);
+          background:var(--pure-white);
+          padding:0 var(--space-lg);
+          max-height:0;overflow:hidden;visibility:hidden;transform-origin:top;transform:scaleY(0);opacity:0;
+          transition: var(--menu-panel-transitions);
+          will-change:max-height,padding,transform,opacity;
+        }
+        .header__nav::before{
+          content:"";position:absolute;left:5%;right:5%;top:0;height:1px;
+          background:rgba(168,137,74,.5);opacity:0;transition:opacity var(--duration-med) var(--ease-ceremonial);
+          pointer-events:none;
+        }
+        .header__nav-link{padding:.75rem 0;}
+
+        /* OPEN: instant visibility; other props animate */
+        .header.header--open .header__nav{
+          max-height:80vh;padding-top:var(--space-md);padding-bottom:var(--space-md);
+          visibility:visible;transform:scaleY(1);opacity:1;
+          transition:
+            max-height var(--menu-speed) var(--ease-ceremonial),
+            padding   var(--menu-speed) var(--ease-ceremonial),
+            transform var(--menu-speed) var(--ease-ceremonial),
+            opacity   var(--menu-speed) var(--ease-ceremonial),
+            visibility 0s linear;
+        }
+        .header.header--open .header__nav::before{opacity:1;}
+
+        .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+        :root{--header-offset:84px;}
+
+        /* Footer accordion + hide top border under copyright bar */
+        .footer{padding:var(--space-lg) 0;}
+        .footer__grid{grid-template-columns:1fr;gap:var(--space-sm);margin-bottom:var(--space-md);}
+        .footer__section{border-bottom:1px solid rgba(255,255,255,.08);padding-block:.25rem;}
+        .footer__title{
+          margin:0;padding:.875rem .25rem;font-size:.95rem;letter-spacing:.07em;
+          display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;
+        }
+        .footer__title::after{
+          content:"";width:10px;height:10px;border-right:2px solid var(--gilded-gold);border-bottom:2px solid var(--gilded-gold);
+          transform:rotate(-45deg);transition:transform var(--duration-med) var(--ease-ceremonial);margin-left:.5rem;
+        }
+        .footer__list{
+          max-height:0;overflow:hidden;opacity:0;
+          transition:max-height 400ms var(--ease-ceremonial),opacity 300ms var(--ease-ceremonial);
+          padding:0 .25rem;
+        }
+        .footer__section--open .footer__title::after{transform:rotate(135deg);}
+        .footer__section--open .footer__list{max-height:320px;opacity:1;padding-bottom:.5rem;}
+        .footer__link{line-height:2;}
+        .footer__bottom{border-top:none;}
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" aria-label="Primary">
+      <nav aria-label="Primary navigation">
+        <div class="header__inner">
+          <a href="#" class="header__logo" aria-label="Siam Vajrayana home">
+            <svg class="header__logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="currentColor"/>
+            </svg>
+            <span>Siam Vajrayana</span>
+          </a>
+          <ul class="header__nav" id="primary-nav" role="list" aria-hidden="true">
+            <li class="header__nav-item"><a class="header__nav-link" href="#experience">Experience</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#calendar">Calendar</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#art">Art</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#membership">Membership</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#journal">Journal</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#contact">Contact</a></li>
+            <li class="header__nav-item header__nav-item--lang">
+              <button class="header__lang" aria-label="Switch language">EN</button>
+            </li>
+          </ul>
+          <button
+            class="header__menu-toggle"
+            aria-label="Open menu"
+            aria-controls="primary-nav"
+            aria-expanded="false">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <!-- Bars positioned at y=5/12/12/19 (two middle lines overlap to form an X) -->
+              <line class="bar bar--top"   x1="-2" y1="5"  x2="21" y2="5"></line>
+              <line class="bar bar--mid-1" x1="-2" y1="12" x2="21" y2="12"></line>
+              <line class="bar bar--mid-2" x1="-2" y1="12" x2="21" y2="12"></line>
+              <line class="bar bar--bot"   x1="-2" y1="19" x2="21" y2="19"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape">
+        <section class="hero">
+          <div class="hero-content">
+            <h1>Enter the Mandala</h1>
+            <p class="subline">A sanctuary of Thai Vajrayana wisdom, healing arts, and sacred journeys in the heart of Thailand</p>
+            <div class="cta-group">
+              <a href="#experience" class="btn btn-primary">Explore Our Path</a>
+              <a href="#contact" class="btn btn-secondary">Book a Private Visit</a>
             </div>
-         </nav>
-      </header>
-      <main id="main">
-         <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape">
-            <div class="caption"><span class="caption-text">SCROLL DOWN</span></div>
-         </div>
-         <section class="section section--light" aria-labelledby="parallax-demo-title">
-            <h3 id="parallax-demo-title" style="text-align:center;">Parallax Demo</h3>
-            <p>Parallax scrolling is a web site trend where the background content is moved at a different
-               speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec
-               libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a,
-               magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis.
-               Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et
-               vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt
-               mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at
-               quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione
-               interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue
-               etiam maecenas, porta porttitor placerat leo.
-            </p>
-         </section>
-         <div class="bgimg bgimg-2" role="img" aria-label="Forest landscape">
-            <div class="caption"><span class="caption-badge">LESS HEIGHT</span></div>
-         </div>
-         <section class="section section--dark">
-            <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
-         </section>
-         <div class="bgimg bgimg-4" role="img" aria-label="Beach landscape">
-            <div class="caption"><span class="caption-badge">SCROLL UP</span></div>
-         </div>
-         <section class="section section--dark">
-            <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
-         </section>
-         <div class="bgimg bgimg-3" role="img" aria-label="Mountain landscape again">
-            <div class="caption"><span class="caption-badge">COOL!</span></div>
-         </div>
-      </main>
-      <footer class="footer" aria-label="Footer">
-         <div class="container">
-            <div class="footer__grid">
-               <section class="footer__section">
-                  <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Experience</h4>
-                  <ul class="footer__list">
-                     <li><a class="footer__link" href="#healing">Healing</a></li>
-                     <li><a class="footer__link" href="#journey">Journey</a></li>
-                     <li><a class="footer__link" href="#circle">Circle</a></li>
-                  </ul>
-               </section>
-               <section class="footer__section">
-                  <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Connect</h4>
-                  <ul class="footer__list">
-                     <li><a class="footer__link" href="#calendar">Calendar</a></li>
-                     <li><a class="footer__link" href="#membership">Membership</a></li>
-                     <li><a class="footer__link" href="#contact">Contact</a></li>
-                  </ul>
-               </section>
-               <section class="footer__section">
-                  <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Foundation</h4>
-                  <ul class="footer__list">
-                     <li><a class="footer__link" href="#about">Origins &amp; Lineage</a></li>
-                     <li><a class="footer__link" href="#journal">Journal</a></li>
-                     <li><a class="footer__link" href="#privacy">Privacy &amp; Ethics</a></li>
-                  </ul>
-               </section>
-               <section class="footer__section">
-                  <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Visit</h4>
-                  <ul class="footer__list">
-                     <li><a class="footer__link" href="#location">Location</a></li>
-                     <li><a class="footer__link" href="#art">Sacred Art Gallery</a></li>
-                     <li><a class="footer__link" href="#concierge">VIP Services</a></li>
-                  </ul>
-               </section>
+          </div>
+        </section>
+      </div>
+
+
+      <section class="section section--light experience" id="experience" aria-labelledby="parallax-demo-title">
+        <div class="container">
+            <div class="section-header">
+                <h2>Three Sacred Paths</h2>
+                <p>Our foundation offers transformative experiences rooted in ancient wisdom, adapted for the modern seeker</p>
             </div>
-            <div class="footer__bottom">
-               <p>© 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhism wisdom.</p>
+            
+            <div class="experience-grid">
+                <a href="#healing" class="experience-card">
+                    <!-- Custom Thai Vajrayana-inspired icon: Stacked offerings/layers -->
+                    <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor">
+                        <path d="M28 8 L14 16 L28 24 L42 16 Z" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M14 24 L28 32 L42 24" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M14 32 L28 40 L42 32" stroke-width="2" stroke-linejoin="round"/>
+                        <circle cx="28" cy="12" r="2" fill="currentColor"/>
+                        <circle cx="28" cy="44" r="2" fill="currentColor"/>
+                    </svg>
+                    <h3>Healing</h3>
+                    <p>Bespoke consultations combining energy work, blessings, and therapeutic sound experiences. Each session is crafted to your unique needs in our sacred space.</p>
+                    <span class="card-link">Learn about healing services</span>
+                </a>
+                
+                <a href="#journey" class="experience-card">
+                    <!-- Custom icon: Mandala with 8-fold path -->
+                    <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor">
+                        <circle cx="28" cy="28" r="20" stroke-width="2"/>
+                        <circle cx="28" cy="28" r="12" stroke-width="2"/>
+                        <circle cx="28" cy="28" r="4" stroke-width="2"/>
+                        <line x1="28" y1="8" x2="28" y2="16" stroke-width="2"/>
+                        <line x1="28" y1="40" x2="28" y2="48" stroke-width="2"/>
+                        <line x1="8" y1="28" x2="16" y2="28" stroke-width="2"/>
+                        <line x1="40" y1="28" x2="48" y2="28" stroke-width="2"/>
+                        <line x1="13.8" y1="13.8" x2="19.8" y2="19.8" stroke-width="2"/>
+                        <line x1="36.2" y1="36.2" x2="42.2" y2="42.2" stroke-width="2"/>
+                        <line x1="42.2" y1="13.8" x2="36.2" y2="19.8" stroke-width="2"/>
+                        <line x1="19.8" y1="36.2" x2="13.8" y2="42.2" stroke-width="2"/>
+                    </svg>
+                    <h3>Journey</h3>
+                    <p>Small, guided experiences through ritual, meditation, and sacred art. Personal, dignified encounters with timeless Vajrayana practices.</p>
+                    <span class="card-link">Explore journey offerings</span>
+                </a>
+                
+                <a href="#circle" class="experience-card">
+                    <!-- Custom icon: Interconnected circles (sangha/community) -->
+                    <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor">
+                        <circle cx="28" cy="20" r="8" stroke-width="2"/>
+                        <circle cx="16" cy="36" r="8" stroke-width="2"/>
+                        <circle cx="40" cy="36" r="8" stroke-width="2"/>
+                        <path d="M23 26 L19 32" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M33 26 L37 32" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="28" cy="28" r="3" fill="currentColor"/>
+                    </svg>
+                    <h3>Circle</h3>
+                    <p>A continuing community for seekers—your spiritual home away from home. Membership brings ongoing teachings, events, and connection.</p>
+                    <span class="card-link">Join the circle</span>
+                </a>
             </div>
-         </div>
-      </footer>
-      <script>
-         /* Prevent restoring previous scroll position on reload */
-         (function(){
-           if ('scrollRestoration' in history){
-             history.scrollRestoration = 'manual';
-           }
-         })();
-         
-         /* Header menu toggle */
-         (function () {
-           const header = document.querySelector('.header');
-           const btn    = document.querySelector('.header__menu-toggle');
-           const panel  = document.getElementById('primary-nav');
-           if (!header || !btn || !panel) return;
-         
-           const openMenu = () => {
-             header.classList.add('header--open');
-             btn.setAttribute('aria-expanded','true');
-             panel.setAttribute('aria-hidden','false');
-             const firstLink = panel.querySelector('a');
-             if (firstLink) firstLink.focus({preventScroll:true});
-           };
-         
-           const closeMenu = () => {
-             header.classList.remove('header--open');
-             btn.setAttribute('aria-expanded','false');
-             panel.setAttribute('aria-hidden','true');
-           };
-         
-           btn.addEventListener('click', () => {
-             const expanded = btn.getAttribute('aria-expanded') === 'true';
-             expanded ? closeMenu() : openMenu();
-           });
-         
-           panel.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
-           document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
-         })();
-         
-         /* Focus trap when menu is open */
-         (function () {
-           const header = document.querySelector('.header');
-           const panel  = document.getElementById('primary-nav');
-           if (!header || !panel) return;
-         
-           function onKeydown(e){
-             if (!header.classList.contains('header--open') || e.key !== 'Tab') return;
-             const focusables = header.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
-             if (!focusables.length) return;
-             const first = focusables[0];
-             const last  = focusables[focusables.length - 1];
-             if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-             else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-           }
-           document.addEventListener('keydown', onKeydown);
-         })();
-         
-         /* Footer accordion (mobile only) */
-         (function () {
-           const mq = window.matchMedia('(max-width: 768px)');
-           const sections = document.querySelectorAll('.footer__section');
-         
-           function setExpanded(sec, expand){
-             const title = sec.querySelector('.footer__title');
-             if (!title) return;
-             title.setAttribute('aria-expanded', String(expand));
-             sec.classList.toggle('footer__section--open', expand);
-           }
-         
-           function enableMobile(){
-             sections.forEach(sec => {
-               const title = sec.querySelector('.footer__title');
-               if (!title) return;
-         
-               setExpanded(sec, false); // collapsed by default
-         
-               const toggle = () => setExpanded(sec, title.getAttribute('aria-expanded') !== 'true');
-         
-               if (title._footerClick){ title.removeEventListener('click', title._footerClick); }
-               if (title._footerKey){   title.removeEventListener('keydown', title._footerKey); }
-         
-               title._footerClick = toggle;
-               title._footerKey   = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } };
-         
-               title.addEventListener('click', title._footerClick);
-               title.addEventListener('keydown', title._footerKey);
-             });
-           }
-         
-           function disableMobile(){
-             sections.forEach(sec => {
-               const title = sec.querySelector('.footer__title');
-               if (!title) return;
-               setExpanded(sec, true); // expanded on desktop
-               if (title._footerClick){ title.removeEventListener('click', title._footerClick); title._footerClick = null; }
-               if (title._footerKey){   title.removeEventListener('keydown', title._footerKey); title._footerKey = null; }
-             });
-           }
-         
-           const onChange = e => e.matches ? enableMobile() : disableMobile();
-           onChange(mq);
-           mq.addEventListener('change', onChange);
-         })();
-      </script>
-   </body>
+        </div>
+    </section>
+
+
+      <div class="bgimg bgimg-2" role="img" aria-label="Forest landscape">
+        <div class="caption"><span class="caption-badge">SECTION C</span></div>
+      </div>
+
+      <section class="section section--dark">
+        <p>“Taming the mind is the process of refining away mental afflictions until we aren't ruled by our circumstances and the negative thoughts and emotions they elicit.” </p>
+      </section>
+
+      <div class="bgimg bgimg-4" role="img" aria-label="Beach landscape">
+        <div class="caption"><span class="caption-badge">SECTION D</span></div>
+      </div>
+
+      <section class="section section--dark">
+        <p>“It’s not a question of deeper. It’s a question of opening wide, completely open. It’s not going in, in, but it’s expanding out, because you don’t have to try to make sure there is a little atom bomb inside you. But you can trust there is energy everywhere, and you have to open to it. Therefore it comes back to you at the same time.” </p>
+      </section>
+
+      <div class="bgimg bgimg-3" role="img" aria-label="Mountain landscape again">
+        <div class="caption"><span class="caption-badge">SECTION E</span></div>
+      </div>
+    </main>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="container">
+        <div class="footer__grid">
+          <section class="footer__section">
+            <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Experience</h4>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#healing">Healing</a></li>
+              <li><a class="footer__link" href="#journey">Journey</a></li>
+              <li><a class="footer__link" href="#circle">Circle</a></li>
+            </ul>
+          </section>
+
+          <section class="footer__section">
+            <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Connect</h4>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#calendar">Calendar</a></li>
+              <li><a class="footer__link" href="#membership">Membership</a></li>
+              <li><a class="footer__link" href="#contact">Contact</a></li>
+            </ul>
+          </section>
+
+          <section class="footer__section">
+            <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Foundation</h4>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#about">Origins &amp; Lineage</a></li>
+              <li><a class="footer__link" href="#journal">Journal</a></li>
+              <li><a class="footer__link" href="#privacy">Privacy &amp; Ethics</a></li>
+            </ul>
+          </section>
+
+          <section class="footer__section">
+            <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true">Visit</h4>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#location">Location</a></li>
+              <li><a class="footer__link" href="#art">Sacred Art Gallery</a></li>
+              <li><a class="footer__link" href="#concierge">VIP Services</a></li>
+            </ul>
+          </section>
+        </div>
+        <div class="footer__bottom">
+          <p>© 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhism wisdom.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* Prevent restoring previous scroll position on reload */
+      (function(){
+        if ('scrollRestoration' in history){
+          history.scrollRestoration = 'manual';
+        }
+      })();
+
+      /* Header menu toggle */
+      (function () {
+        const header = document.querySelector('.header');
+        const btn    = document.querySelector('.header__menu-toggle');
+        const panel  = document.getElementById('primary-nav');
+        if (!header || !btn || !panel) return;
+
+        const openMenu = () => {
+          header.classList.add('header--open');
+          btn.setAttribute('aria-expanded','true');
+          panel.setAttribute('aria-hidden','false');
+          const firstLink = panel.querySelector('a');
+          if (firstLink) firstLink.focus({preventScroll:true});
+        };
+
+        const closeMenu = () => {
+          header.classList.remove('header--open');
+          btn.setAttribute('aria-expanded','false');
+          panel.setAttribute('aria-hidden','true');
+        };
+
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          expanded ? closeMenu() : openMenu();
+        });
+
+        panel.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+      })();
+
+      /* Focus trap when menu is open */
+      (function () {
+        const header = document.querySelector('.header');
+        const panel  = document.getElementById('primary-nav');
+        if (!header || !panel) return;
+
+        function onKeydown(e){
+          if (!header.classList.contains('header--open') || e.key !== 'Tab') return;
+          const focusables = header.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
+          if (!focusables.length) return;
+          const first = focusables[0];
+          const last  = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+        document.addEventListener('keydown', onKeydown);
+      })();
+
+      /* Footer accordion (mobile only) */
+      (function () {
+        const mq = window.matchMedia('(max-width: 768px)');
+        const sections = document.querySelectorAll('.footer__section');
+
+        function setExpanded(sec, expand){
+          const title = sec.querySelector('.footer__title');
+          if (!title) return;
+          title.setAttribute('aria-expanded', String(expand));
+          sec.classList.toggle('footer__section--open', expand);
+        }
+
+        function enableMobile(){
+          sections.forEach(sec => {
+            const title = sec.querySelector('.footer__title');
+            if (!title) return;
+
+            setExpanded(sec, false); // collapsed by default
+
+            const toggle = () => setExpanded(sec, title.getAttribute('aria-expanded') !== 'true');
+
+            if (title._footerClick){ title.removeEventListener('click', title._footerClick); }
+            if (title._footerKey){   title.removeEventListener('keydown', title._footerKey); }
+
+            title._footerClick = toggle;
+            title._footerKey   = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } };
+
+            title.addEventListener('click', title._footerClick);
+            title.addEventListener('keydown', title._footerKey);
+          });
+        }
+
+        function disableMobile(){
+          sections.forEach(sec => {
+            const title = sec.querySelector('.footer__title');
+            if (!title) return;
+            setExpanded(sec, true); // expanded on desktop
+            if (title._footerClick){ title.removeEventListener('click', title._footerClick); title._footerClick = null; }
+            if (title._footerKey){   title.removeEventListener('keydown', title._footerKey); title._footerKey = null; }
+          });
+        }
+
+        const onChange = e => e.matches ? enableMobile() : disableMobile();
+        onChange(mq);
+        mq.addEventListener('change', onChange);
+      })();
+    </script>
+  </body>
 </html>
