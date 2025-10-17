@@ -4,6 +4,14 @@
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Siam Vajrayana</title>
+
+    <!-- Preload the above-the-fold hero background -->
+    <link rel="preload" as="image" href="img/sv-light.png" fetchpriority="high">
+    <!-- Prefetch the other background images for smoother later loads -->
+    <link rel="prefetch" as="image" href="img/sv-inside.png">
+    <link rel="prefetch" as="image" href="img/sv-dark.png">
+    <link rel="prefetch" as="image" href="img/16-Arhats-and-Shakyamuni-Buddha.jpg">
+    
     <style>
       /* ──────────────────────────────────────────────────────────────
          1) DESIGN TOKENS
@@ -266,7 +274,7 @@
         max-width: 900px;
         padding: var(--space-2xl) var(--space-md);
       }
-      .hero h1 { margin-bottom: var(--space-md); opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .3s forwards; text-shadow:0 2px 12px rgba(0,0,0,.2);}
+      .hero h1 { font-weight: 600; margin-bottom: var(--space-md); opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .3s forwards; text-shadow:0 0 20px var(--gilded-gold)}
       .hero .subline { margin-bottom: var(--space-xl); opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .6s forwards; }
       .cta-group { display:flex; gap:var(--space-md); justify-content:center; flex-wrap:wrap; opacity:0; animation: fadeInUp 1s var(--ease-ceremonial) .9s forwards; }
 
