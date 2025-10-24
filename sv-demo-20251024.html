@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Siam Vajrayana</title>
+
+  <!-- SEO / Open Graph -->
+  <meta name="description" content="Siam Vajrayana — a Thai-founded sanctuary for Vajrayana wisdom, sacred art, and contemplative journeys. Revival of Thailand's Mahayana/Vajrayana heritage for modern seekers.">
+  <link rel="canonical" href="https://siamvajrayana.com/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFC34B">
+  
+  <meta property="og:title" content="Siam Vajrayana">
+  <meta property="og:description" content="Thai Vajrayana revival — wisdom, healing, sacred art, and community.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://siamvajrayana.com/">
+  <meta property="og:image" content="https://siamvajrayana.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Siam Vajrayana Foundation",
+    "alternateName": "สยามวัชรยาน",
+    "url": "https://siamvajrayana.com",
+    "logo": "https://siamvajrayana.com/logo.png",
+    "description": "A Thai-founded sanctuary for Vajrayana wisdom, sacred art, and contemplative journeys. Revival of Thailand's Mahayana/Vajrayana heritage for modern seekers.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "TH"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": ["English", "Thai"]
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    /* ==========================================
+       FONTS
+    ========================================== */
+    /* Thai Content Font */
+    @font-face {
+      font-family: 'JS Chanok';
+      src: url('font/JS-Chanok-Normal.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* English Content Font - Work Sans Variable */
+    @font-face {
+      font-family: 'Work Sans';
+      src: url('font/WorkSans.woff2') format('woff2-variations');
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Alternative Serif Fonts (if needed) */
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url('font/CormorantGaramond.woff2') format('woff2-variations');
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Libre Baskerville';
+      src: url('font/LibreBaskerville-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Libre Baskerville';
+      src: url('font/LibreBaskerville-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Libre Baskerville';
+      src: url('font/LibreBaskerville-Italic.woff2') format('woff2');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('font/Montserrat.woff2') format('woff2-variations');
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ==========================================
+       CSS VARIABLES
+    ========================================== */
+    :root {
+      /* Colors */
+      --sv-blue-900: #0F1F3F;
+      --sv-blue-800: #132B53;
+      --sv-blue-700: #2E5A78;
+      --sv-blue-500: #3E6B8A;
+      --sv-blue-300: #A0C6E1;
+      --gold: #FFC34B;
+      --gold-600: #E9B23E;
+      --gold-300: #FFE09C;
+      --white: #FFFFFF;
+      --ivory: #ECE7DF;
+      --text: #1A1A1A;
+      --text-2: #5A5A5A;
+
+      /* Shadows */
+      --shadow-gold: 0 8px 28px rgba(168, 137, 74, .25);
+      --shadow-card: 0 6px 18px rgba(10, 18, 40, .06);
+
+      /* Typography */
+      --font-content-latin: 'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      --font-content-thai: 'JS Chanok', system-ui, sans-serif;
+      --font-logo-latin: 'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      --font-logo-thai: 'JS Chanok', system-ui, sans-serif;
+
+      /* Font Size Scaling - ENGLISH (Default = 1) */
+      --scale-logo-title: 1;
+      --scale-nav-menu: 1;
+      --scale-lang-selector: 0.8;
+      --scale-hero-title: 1;
+      --scale-hero-subtitle: 1;
+      --scale-section-title: 1;
+      --scale-section-text: 1;
+      --scale-card-title: 1;
+      --scale-card-sub: 1;
+      --scale-card-text: 1;
+      --scale-card-link: 1;
+      --scale-button: 1;
+      --scale-quote: 1;
+      --scale-caption-badge: 1;
+      --scale-footer-title: 1;
+      --scale-footer-links: 1;
+      --scale-footer-bottom: 1;
+
+      /* Spacing */
+      --space-xs: .5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: 6rem;
+
+      /* Animations */
+      --ease-ceremonial: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease: cubic-bezier(.25, .8, .3, 1);
+      --duration-fast: 200ms;
+      --duration-med: 350ms;
+      --speed: 320ms;
+      --menu-speed: 550ms;
+
+      /* Consolidated transitions */
+      --transition-base: var(--speed) var(--ease);
+      --transition-ceremonial: var(--duration-med) var(--ease-ceremonial);
+
+      /* Layout */
+      --header-offset: 96px;
+      --header-height: 88px;
+
+      /* Menu transitions */
+      --menu-panel-transitions:
+        max-height var(--menu-speed) var(--ease-ceremonial),
+        padding var(--menu-speed) var(--ease-ceremonial),
+        transform var(--menu-speed) var(--ease-ceremonial),
+        opacity var(--menu-speed) var(--ease-ceremonial),
+        visibility 0s linear var(--menu-speed);
+    }
+
+    /* Font Size Scaling - THAI */
+    :root:lang(th) {
+      --scale-logo-title: 1.5;
+      --scale-nav-menu: 1.6;
+      --scale-lang-selector: 0.8;
+      --scale-hero-title: 1.1;
+      --scale-hero-subtitle: 2;
+      --scale-section-title: 1.1;
+      --scale-section-text: 2;
+      --scale-card-title: 1.1;
+      --scale-card-sub: 2;
+      --scale-card-text: 2;
+      --scale-card-link: 2;
+      --scale-button: 1.1;
+      --scale-quote: 2;
+      --scale-caption-badge: 2;
+      --scale-footer-title: 2;
+      --scale-footer-links: 2;
+      --scale-footer-bottom: 2;
+    }
+
+    /* ==========================================
+       RESET & BASE
+    ========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      font-family: var(--font-content-latin);
+      font-weight: 300;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    :lang(th) body {
+      font-family: var(--font-content-thai);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :target {
+      scroll-margin-top: var(--header-offset);
+    }
+
+    /* ==========================================
+       ACCESSIBILITY
+    ========================================== */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: var(--space-md);
+      top: var(--space-md);
+      width: auto;
+      height: auto;
+      padding: .5rem 1rem;
+      background: #000;
+      color: #fff;
+      z-index: 2000;
+    }
+
+    /* ==========================================
+       TYPOGRAPHY
+    ========================================== */
+    h1, h2, h3 {
+      font-family: var(--font-content-latin);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    :lang(th) h1,
+    :lang(th) h2,
+    :lang(th) h3 {
+      font-family: var(--font-content-thai);
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    h1 {
+      font-size: calc(clamp(2.6rem, 4vw + 1rem, 4.8rem) * var(--scale-hero-title));
+      letter-spacing: -.01em;
+    }
+
+    h2 {
+      font-size: calc(clamp(2.1rem, 3vw + .5rem, 3.6rem) * var(--scale-section-title));
+      letter-spacing: .005em;
+    }
+
+    h3 {
+      font-size: calc(clamp(1.25rem, 1.8vw, 1.6rem) * var(--scale-card-title));
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    :lang(th) h3 {
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    p, li, .section, .footer__link, .header__nav-link {
+      letter-spacing: .01em;
+      font-weight: 300;
+    }
+
+    :lang(th) p,
+    :lang(th) li {
+      letter-spacing: 0;
+      line-height: 1.9;
+    }
+
+    /* ==========================================
+       LAYOUT
+    ========================================== */
+    .container {
+      width: 90%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section {
+      padding: 72px 80px;
+    }
+
+    .section--light {
+      background: var(--ivory);
+      color: #5d5d5d;
+    }
+
+    .section--dark {
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(255, 195, 75, .14), transparent 60%),
+        linear-gradient(180deg, #1A2437 0%, #111927 100%);
+      color: #e9edf6;
+    }
+
+    /* ==========================================
+       HEADER & NAVIGATION
+    ========================================== */
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: var(--shadow-card);
+      height: var(--header-height);
+    }
+
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .header__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--sv-blue-900);
+      font-family: var(--font-logo-latin);
+      font-size: calc(1.5rem * var(--scale-logo-title));
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+
+    .header__logo, .header__nav-link { 
+      line-height: 1; 
+    }
+
+    :lang(th) .header__logo {
+      font-family: var(--font-logo-thai);
+    }
+
+    .header__logo-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .header > nav { 
+      height: 100%; 
+    }
+
+    .header__nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      height: 100%;
+    }
+
+    .header__nav-item {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .header__nav-link {
+      color: var(--sv-blue-700);
+      position: relative;
+      padding: .35rem 0;
+      font-size: calc(1rem * var(--scale-nav-menu));
+      white-space: nowrap;
+    }
+
+    .header__nav-link::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width var(--transition-base);
+    }
+
+    @media (hover: hover) {
+      .header__nav-link:hover {
+        color: var(--sv-blue-900);
+      }
+
+      .header__nav-link:hover::after {
+        width: 70%;
+      }
+    }
+
+    /* Hamburger Menu */
+    .header__menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .5rem;
+      color: var(--sv-blue-900);
+      flex-shrink: 0;
+    }
+
+    .header__menu-toggle svg {
+      display: block;
+      overflow: visible;
+    }
+
+    .header__menu-toggle .bar {
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+      transform-box: view-box;
+      transform-origin: 12px 12px;
+      transition:
+        transform var(--transition-ceremonial),
+        opacity var(--transition-ceremonial);
+    }
+
+    .header.header--open .header__menu-toggle .bar--top {
+      opacity: 0;
+    }
+
+    .header.header--open .header__menu-toggle .bar--mid-1 {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .header.header--open .header__menu-toggle .bar--mid-2 {
+      transform: rotate(-45deg);
+    }
+
+    .header.header--open .header__menu-toggle .bar--bot {
+      opacity: 0;
+    }
+
+    .header.header--open {
+    border-bottom-color: transparent;
+    box-shadow: none;
+    }
+
+    /* ==========================================
+       LANGUAGE DROPDOWN
+    ========================================== */
+    .lang-dropdown {
+      position: relative;
+      margin-left: 1rem;
+    }
+
+    .lang-btn {
+      background: #fff;
+      border: 2px solid var(--gold);
+      color: var(--sv-blue-900);
+      padding: .5rem 1rem;
+      font-size: calc(1rem * var(--scale-lang-selector));
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .lang-btn:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .lang-btn:hover {
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-1px);
+    }
+
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: rgba(15, 31, 63, .96);
+      border: 1px solid var(--gold);
+      border-radius: 3px;
+      min-width: max-content;
+      padding: .35rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .1rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: var(--transition-base);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .28);
+    }
+
+    .lang-menu.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .lang-menu button {
+      background: none;
+      border: none;
+      color: #fff;
+      white-space: nowrap;
+      text-align: left;
+      cursor: pointer;
+      padding: .55rem 1rem;
+      font-size: calc(1rem * var(--scale-lang-selector));
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .lang-menu button:hover {
+      color: var(--gold-300);
+    }
+
+    .mobile-lang {
+      display: none;
+    }
+
+    #langDropdownDesktop {
+      display: block;
+    }
+
+    /* ==========================================
+       PARALLAX BACKGROUNDS
+    ========================================== */
+    .bgimg {
+      position: relative;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      isolation: isolate;
+    }
+
+    /* Mobile fallback for iOS */
+    @supports (-webkit-overflow-scrolling: touch) {
+      .bgimg {
+        background-attachment: scroll;
+      }
+    }
+
+    .bgimg-1 {
+      background-image: url("img/sv-light.webp");
+      min-height: 100vh;
+    }
+
+    .bgimg-2 {
+      background-image: url("img/sv-inside.webp");
+      min-height: 500px;
+    }
+
+    .bgimg-3 {
+      background-image: url("img/sv-dark.webp");
+      min-height: 500px;
+    }
+
+    .bgimg-4 {
+      background-image: url("img/16-Arhats-and-Shakyamuni-Buddha.webp");
+      min-height: 500px;
+    }
+
+    .caption {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .caption-badge {
+      display: inline-block;
+      background: linear-gradient(180deg, rgba(10, 20, 40, .66), rgba(10, 20, 40, .66));
+      color: #fff;
+      padding: 16px 24px;
+      border: 1px solid var(--gold);
+      backdrop-filter: blur(4px);
+      font-variant: all-small-caps;
+      font-size: calc(1rem * var(--scale-caption-badge));
+      letter-spacing: .18em;
+      border-radius: 3px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    :lang(th) .caption-badge {
+      font-variant: normal;
+      letter-spacing: .06em;
+    }
+
+    /* ==========================================
+       HERO SECTION
+    ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      z-index: 10;
+      text-align: center;
+      color: #fff;
+      max-width: 900px;
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .hero h1 {
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeInUp 1s var(--ease) .3s forwards;
+    }
+
+    .hero .subline {
+      margin-bottom: var(--space-xl);
+      font-size: calc(1rem * var(--scale-hero-subtitle));
+      opacity: 0;
+      animation: fadeInUp 1s var(--ease) .6s forwards;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: stretch;
+      opacity: 0;
+      animation: fadeInUp 1s var(--ease) .9s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 2px;
+      transition: all 300ms var(--ease);
+      border: 2px solid transparent;
+      font-size: calc(1rem * var(--scale-button));
+      cursor: pointer;
+      min-width: 300px;
+      max-width: 100%;
+      text-align: center;
+      letter-spacing: .02em;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--sv-blue-900);
+      border-color: var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      color: var(--sv-blue-900);
+    }
+
+    /* ==========================================
+       EXPERIENCE SECTION
+    ========================================== */
+    .experience {
+      padding: calc(var(--space-2xl) + 8px) 0;
+      background: linear-gradient(180deg, #F2EFE8 0%, #ECE7DF 100%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: calc(var(--space-xl) + 8px);
+    }
+
+    .section-header h2 {
+      color: var(--sv-blue-900);
+      margin-bottom: .75rem;
+    }
+
+    .section-header h2::after {
+      content: "◆";
+      display: block;
+      color: var(--gold);
+      font-weight: 700;
+      opacity: .9;
+      margin: .6rem auto 0 auto;
+      font-size: .95rem;
+      line-height: 1;
+    }
+
+    .section-header p {
+      color: var(--text-2);
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: calc(1rem * var(--scale-section-text));
+      line-height: 1.85;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .experience-card {
+      background: #fff;
+      border: 1px solid rgba(255, 195, 75, .6);
+      padding: calc(var(--space-xl) - .25rem) var(--space-lg);
+      position: relative;
+      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), border-color 300ms var(--ease);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border-radius: 3px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(255, 195, 75, .35);
+      border-radius: 2px;
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(10, 18, 40, .18), 0 8px 26px rgba(168, 137, 74, .18);
+      border-color: var(--gold);
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: var(--space-md);
+      color: var(--gold);
+      stroke-width: 2;
+    }
+
+    .experience-card h3 {
+      color: var(--sv-blue-900);
+      margin-bottom: .5rem;
+    }
+
+    .experience-card h3::after {
+      content: "◆";
+      display: block;
+      color: var(--gold);
+      opacity: .9;
+      margin: .45rem 0 0 0;
+      font-size: .8rem;
+      line-height: 1;
+    }
+
+    .card-sub {
+      color: #7a6a3a;
+      font-weight: 600;
+      letter-spacing: .08em;
+      font-size: calc(.85rem * var(--scale-card-sub));
+      margin-bottom: .75rem;
+    }
+
+    .experience-card p {
+      color: var(--text-2);
+      line-height: 1.85;
+      font-size: calc(1rem * var(--scale-card-text));
+      margin-top: .5rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .card-link {
+      color: var(--sv-blue-700);
+      font-weight: 600;
+      font-size: calc(.95rem * var(--scale-card-link));
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform .25s var(--ease);
+    }
+
+    .experience-card:hover .card-link {
+      color: var(--gold-600);
+    }
+
+    .experience-card:hover .card-link::after {
+      transform: translateX(6px);
+    }
+
+    /* ==========================================
+       QUOTE SECTIONS
+    ========================================== */
+    .quote {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 64px 24px 72px;
+      position: relative;
+    }
+
+    .quote::before {
+      content: "◆";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold);
+      font-size: .95rem;
+      opacity: .95;
+    }
+
+    .quote p {
+      font-size: calc(clamp(1.15rem, 1.2rem + .4vw, 1.6rem) * var(--scale-quote));
+      line-height: 1.9;
+      color: #EAEFF7;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+    }
+
+    /* ==========================================
+       DECORATIVE FRIEZE
+    ========================================== */
+    .frieze {
+      height: 2px;
+      opacity: .9;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 15%, var(--gold) 85%, transparent 100%);
+      margin: var(--space-xl) auto;
+      max-width: 800px;
+      position: relative;
+      z-index: 99;
+    }
+
+    .frieze::before,
+    .frieze::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: .75rem;
+      opacity: .9;
+    }
+
+    .frieze::before {
+      left: 10%;
+    }
+
+    .frieze::after {
+      right: 10%;
+    }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    .footer {
+      background: var(--sv-blue-900);
+      color: #fff;
+      padding: var(--space-xl) 0 var(--space-lg);
+      border-top: 2px solid var(--gold);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0;
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer__title {
+      color: var(--gold);
+      margin-bottom: .65rem;
+      font-size: calc(1rem * var(--scale-footer-title));
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-top: .25rem;
+    }
+
+    .footer__list {
+      list-style: none;
+      margin-top: .9rem;
+    }
+
+    .footer__link {
+      color: #BFD7EA;
+      text-decoration: none;
+      font-size: calc(1rem * var(--scale-footer-links));
+      line-height: 2.2;
+      display: inline-block;
+      transition: color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    @media (hover: hover) {
+      .footer__link:hover {
+        color: #fff;
+        transform: translateX(4px);
+      }
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255, 195, 75, .28);
+      padding-top: var(--space-md);
+      text-align: center;
+      color: #BFD7EA;
+      font-size: calc(.9rem * var(--scale-footer-bottom));
+    }
+
+    /* ==========================================
+       RESPONSIVE - MOBILE
+    ========================================== */
+    @media (max-width: 768px) {
+      /* Header Mobile */
+      .header {
+        height: var(--header-height);
+        min-height: var(--header-height);
+        position: fixed;
+      }
+
+      .header__menu-toggle {
+        display: block;
+      }
+
+      .header__inner {
+        padding: var(--space-sm) 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: var(--space-sm);
+        row-gap: 0 !important;
+        height: var(--header-height);
+      }
+
+      .header.header--open .header__inner {
+        row-gap: 0 !important; 
+      }
+
+      .header__nav {
+        order: 2;
+        left: 0;
+        right: 0;
+        top: var(--header-height); /* sits directly under the bar */
+        z-index: 999;              /* above page content */
+        width: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        background: #fff;
+        padding: 0 var(--space-lg);
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+        transition: var(--menu-panel-transitions);
+        border-bottom: 2px solid var(--gold);
+        will-change: max-height, padding, transform, opacity;
+        height: auto;
+      }
+
+      .header__nav-item {
+        height: 30px;
+      }
+
+      .header__nav::before {
+        content: "";
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 0;
+        height: 1px;
+        background: rgba(168, 137, 74, .5);
+        opacity: 0;
+        transition: opacity var(--transition-ceremonial);
+        pointer-events: none;
+      }
+
+      .header__nav-link {
+        padding: .75rem 0;
+      }
+
+      .header.header--open .header__nav {
+        max-height: 80vh;
+        padding-top: var(--space-md);
+        padding-bottom: var(--space-md);
+        visibility: visible;
+        transform: scaleY(1);
+        opacity: 1;
+        overflow: visible;  
+        transition:
+          max-height var(--menu-speed) var(--ease-ceremonial),
+          padding var(--menu-speed) var(--ease-ceremonial),
+          transform var(--menu-speed) var(--ease-ceremonial),
+          opacity var(--menu-speed) var(--ease-ceremonial),
+          visibility 0s linear;
+      }
+
+      .header.header--open .header__nav::before {
+        opacity: 1;
+      }
+
+      /* Language Mobile */
+      .mobile-lang {
+        display: block;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(168, 137, 74, .3);
+        width: 100%;
+      }
+
+      #langDropdownDesktop {
+        display: none !important;
+      }
+
+      .mobile-lang .lang-dropdown {
+        margin-left: 0;
+        position: relative;                 /* containing block for the menu */
+        z-index: 1;
+      }
+
+      .mobile-lang .lang-btn {
+        width: 100%;
+        background: #fff;
+        color: var(--sv-blue-900);
+      }
+
+      .mobile-lang .lang-menu {
+        position: absolute;                 /* revert from 'static' */
+        left: 0;
+        top: calc(100% + 8px);
+        transform: translateY(-50%);       /* center under the button */
+        min-width: 100%;                    /* or a fixed width like 12rem */
+        max-height: 50vh;                   /* safety for small screens */
+        overflow: auto;                     /* scroll inside if needed */
+        margin-top: 0;                      /* cancel earlier margin */
+        box-shadow: 0 12px 36px rgba(0,0,0,.28); /* restore shadow */
+        z-index: 1000;                      /* above the panel */
+      }
+
+      .mobile-lang .lang-menu.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+      }
+
+      /* Footer Mobile */
+      .footer {
+        padding: var(--space-lg) 0;
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+      }
+
+      .footer__section {
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+        padding-block: .25rem;
+      }
+
+      .footer__title {
+        margin: 0;
+        padding: .875rem .25rem;
+        font-size: calc(.95rem * var(--scale-footer-title));
+        letter-spacing: .07em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .footer__title::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid var(--gold);
+        border-bottom: 2px solid var(--gold);
+        transform: rotate(-45deg);
+        transition: transform var(--transition-ceremonial);
+        margin-left: .5rem;
+      }
+
+      .footer__list {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 400ms var(--ease-ceremonial), opacity 300ms var(--ease-ceremonial);
+        padding: 0 .25rem;
+      }
+
+      .footer__section--open .footer__title::after {
+        transform: rotate(135deg);
+      }
+
+      .footer__section--open .footer__list {
+        max-height: 320px;
+        opacity: 1;
+        padding-bottom: .5rem;
+      }
+
+      .footer__link {
+        line-height: 2;
+      }
+
+      .footer__bottom {
+        border-top: none;
+      }
+
+      /* CTA & Section Mobile */
+      .cta-group .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 56px 22px;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ==========================================
+       HEADER
+  ========================================== -->
+  <header class="header" aria-label="Primary">
+    <nav aria-label="Primary navigation">
+      <div class="header__inner">
+        <!-- Logo -->
+        <a href="#" class="header__logo" aria-label="Siam Vajrayana home">
+          <svg class="header__logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="currentColor"/>
+          </svg>
+          <span data-i18n-en="Siam Vajrayana" data-i18n-th="สยามวัชรยาน">Siam Vajrayana</span>
+        </a>
+
+        <!-- Navigation Menu -->
+        <ul class="header__nav" id="primary-nav">
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#experience" data-i18n-en="Experience" data-i18n-th="ประสบการณ์">Experience</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#calendar" data-i18n-en="Calendar" data-i18n-th="ปฏิทิน">Calendar</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#art" data-i18n-en="Art" data-i18n-th="ศิลป์ศักดิ์สิทธิ์">Art</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#membership" data-i18n-en="Membership" data-i18n-th="สมาชิกภาพ">Membership</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#journal" data-i18n-en="Journal" data-i18n-th="บันทึก">Journal</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#contact" data-i18n-en="Contact" data-i18n-th="ติดต่อ">Contact</a>
+          </li>
+
+          <!-- Mobile Language Dropdown (inside nav panel) -->
+          <li class="header__nav-item mobile-lang" aria-hidden="true">
+            <div class="lang-dropdown">
+              <button class="lang-btn" id="langToggleMobile">EN ▾</button>
+              <div class="lang-menu" id="langMenuMobile">
+                <button data-lang="en">English</button>
+                <button data-lang="th">ไทย</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Desktop Language Dropdown -->
+        <div class="lang-dropdown" id="langDropdownDesktop" aria-hidden="false">
+          <button class="lang-btn" id="langToggle">EN ▾</button>
+          <div class="lang-menu" id="langMenu">
+            <button data-lang="en">English</button>
+            <button data-lang="th">ไทย</button>
+          </div>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button class="header__menu-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line class="bar bar--top" x1="-2" y1="5" x2="21" y2="5"></line>
+            <line class="bar bar--mid-1" x1="-2" y1="12" x2="21" y2="12"></line>
+            <line class="bar bar--mid-2" x1="-2" y1="12" x2="21" y2="12"></line>
+            <line class="bar bar--bot" x1="-2" y1="19" x2="21" y2="19"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT
+  ========================================== -->
+  <main id="main">
+    <!-- Hero Section -->
+    <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 data-i18n-en="Enter the Mandala" data-i18n-th="ก้าวสู่มันดาลา">Enter the Mandala</h1>
+          <p class="subline" 
+             data-i18n-en="A sanctuary of Thai Vajrayana wisdom, healing arts, and sacred journeys in the heart of Thailand" 
+             data-i18n-th="สถานปฏิบัติ วัชรยานแบบไทยเพื่อปัญญา การเยียวยา และการเดินทางศักดิ์สิทธิ์ ในใจกลางประเทศไทย">
+            A sanctuary of Thai Vajrayana wisdom, healing arts, and sacred journeys in the heart of Thailand
+          </p>
+          <div class="cta-group">
+            <a href="#experience" class="btn btn-primary" 
+               data-i18n-en="Explore Our Path" data-i18n-th="สำรวจเส้นทางของเรา">Explore Our Path</a>
+            <a href="#contact" class="btn btn-secondary" 
+               data-i18n-en="Book a Private Visit" data-i18n-th="จองการเยี่ยมส่วนตัว">Book a Private Visit</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Experience Section -->
+    <section class="section section--light experience" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n-en="Three Sacred Paths" data-i18n-th="สามวิถีศักดิ์สิทธิ์">Three Sacred Paths</h2>
+          <p data-i18n-en="Our foundation offers transformative experiences rooted in ancient wisdom, adapted for the modern seeker" 
+             data-i18n-th="เรานำเสนอประสบการณ์การเปลี่ยนแปลงที่หยั่งรากในปัญญาโบราณ ปรับให้เหมาะกับผู้แสวงหายุคใหม่">
+            Our foundation offers transformative experiences rooted in ancient wisdom, adapted for the modern seeker
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <!-- Healing Card -->
+          <a href="#healing" class="experience-card">
+            <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M28 8 L14 16 L28 24 L42 16 Z" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M14 24 L28 32 L42 24" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M14 32 L28 40 L42 32" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="28" cy="12" r="2" fill="currentColor"/>
+              <circle cx="28" cy="44" r="2" fill="currentColor"/>
+            </svg>
+            <h3 data-i18n-en="Healing" data-i18n-th="การเยียวยา">Healing</h3>
+            <div class="card-sub" data-i18n-en="Energy, blessing, and sound" data-i18n-th="พลังงาน พรมนต์ และเสียงบำบัด">Energy, blessing, and sound</div>
+            <p data-i18n-en="Bespoke consultations combining energy work, blessings, and therapeutic sound experiences. Each session is crafted to your unique needs in our sacred space." 
+               data-i18n-th="การปรึกษาเฉพาะบุคคล ผสานงานพลังงาน พรมนต์ และประสบการณ์เสียงบำบัด ทุกรอบออกแบบตามความต้องการของคุณในพื้นที่ศักดิ์สิทธิ์ของเรา">
+              Bespoke consultations combining energy work, blessings, and therapeutic sound experiences. Each session is crafted to your unique needs in our sacred space.
+            </p>
+            <span class="card-link" data-i18n-en="Learn about healing services" data-i18n-th="ดูบริการการเยียวยา">Learn about healing services</span>
+          </a>
+
+          <!-- Journey Card -->
+          <a href="#journey" class="experience-card">
+            <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="28" cy="28" r="20" stroke-width="2"/>
+              <circle cx="28" cy="28" r="12" stroke-width="2"/>
+              <circle cx="28" cy="28" r="4" stroke-width="2"/>
+              <line x1="28" y1="8" x2="28" y2="16" stroke-width="2"/>
+              <line x1="28" y1="40" x2="28" y2="48" stroke-width="2"/>
+              <line x1="8" y1="28" x2="16" y2="28" stroke-width="2"/>
+              <line x1="40" y1="28" x2="48" y2="28" stroke-width="2"/>
+              <line x1="13.8" y1="13.8" x2="19.8" y2="19.8" stroke-width="2"/>
+              <line x1="36.2" y1="36.2" x2="42.2" y2="42.2" stroke-width="2"/>
+              <line x1="42.2" y1="13.8" x2="36.2" y2="19.8" stroke-width="2"/>
+              <line x1="19.8" y1="36.2" x2="13.8" y2="42.2" stroke-width="2"/>
+            </svg>
+            <h3 data-i18n-en="Journey" data-i18n-th="การเดินทาง">Journey</h3>
+            <div class="card-sub" data-i18n-en="Ritual, meditation, sacred art" data-i18n-th="พิธีกรรม สมาธิ ศิลป์ศักดิ์สิทธิ์">Ritual, meditation, sacred art</div>
+            <p data-i18n-en="Small, guided experiences through ritual, meditation, and sacred art. Personal, dignified encounters with timeless Vajrayana practices." 
+               data-i18n-th="ประสบการณ์กลุ่มเล็กพร้อมผู้นำ ผ่านพิธีกรรม สมาธิ และศิลปะศักดิ์สิทธิ์ สัมผัสที่มีศักดิ์ศรีกับการปฏิบัติของวัชรยาน">
+              Small, guided experiences through ritual, meditation, and sacred art. Personal, dignified encounters with timeless Vajrayana practices.
+            </p>
+            <span class="card-link" data-i18n-en="Explore journey offerings" data-i18n-th="สำรวจรูปแบบการเดินทาง">Explore journey offerings</span>
+          </a>
+
+          <!-- Circle Card -->
+          <a href="#circle" class="experience-card">
+            <svg class="card-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="28" cy="20" r="8" stroke-width="2"/>
+              <circle cx="16" cy="36" r="8" stroke-width="2"/>
+              <circle cx="40" cy="36" r="8" stroke-width="2"/>
+              <path d="M23 26 L19 32" stroke-width="2" stroke-linecap="round"/>
+              <path d="M33 26 L37 32" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="28" cy="28" r="3" fill="currentColor"/>
+            </svg>
+            <h3 data-i18n-en="Circle" data-i18n-th="ชุมชน">Circle</h3>
+            <div class="card-sub" data-i18n-en="Teachings, events, belonging" data-i18n-th="การเรียนรู้ กิจกรรม การเชื่อมต่อ">Teachings, events, belonging</div>
+            <p data-i18n-en="A continuing community for seekers—your spiritual home away from home. Membership brings ongoing teachings, events, and connection." 
+               data-i18n-th="ชุมชนต่อเนื่องสำหรับผู้แสวงหา—บ้านทางจิตวิญญาณของคุณ สมาชิกภาพเปิดสู่การเรียนรู้ กิจกรรม และการเชื่อมต่ออย่างต่อเนื่อง">
+              A continuing community for seekers—your spiritual home away from home. Membership brings ongoing teachings, events, and connection.
+            </p>
+            <span class="card-link" data-i18n-en="Join the circle" data-i18n-th="เข้าร่วมชุมชน">Join the circle</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parallax Caption 1 -->
+    <div class="bgimg bgimg-2" role="img" aria-label="Forest landscape">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Revival of Thai Vajrayana" data-i18n-th="การฟื้นคืนวัชรยานแบบไทย">Revival of Thai Vajrayana</span>
+      </div>
+    </div>
+
+    <!-- Quote Section 1 -->
+    <section class="section section--dark">
+      <div class="quote">
+        <p data-i18n-en="&quot;Taming the mind is the process of refining away mental afflictions until we aren't ruled by our circumstances and the negative thoughts and emotions they elicit.&quot;" 
+           data-i18n-th="&quot;การฝึกจิตคือการค่อยๆ กลั่นกิเลสออกไป จนเราไม่ถูกครอบงำด้วยสถานการณ์และความคิดอารมณ์ลบที่มันกระตุ้นขึ้นมา&quot;">
+          "Taming the mind is the process of refining away mental afflictions until we aren't ruled by our circumstances and the negative thoughts and emotions they elicit."
+        </p>
+      </div>
+    </section>
+
+    <!-- Parallax Caption 2 -->
+    <div class="bgimg bgimg-4" role="img" aria-label="Historical mural: Arhats and Shakyamuni">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Sacred Art & Heritage" data-i18n-th="ศิลป์ศักดิ์สิทธิ์และมรดก">Sacred Art & Heritage</span>
+      </div>
+    </div>
+
+    <!-- Quote Section 2 -->
+    <section class="section section--dark">
+      <div class="quote">
+        <p data-i18n-en="&quot;It's not a question of deeper. It's a question of opening wide, completely open... therefore it comes back to you at the same time.&quot;" 
+           data-i18n-th="&quot;ไม่ใช่คำถามว่าจะลึกแค่ไหน แต่คือการเปิดกว้าง เปิดทั้งหมด... เมื่อเปิดได้ พลังงานก็ย้อนกลับมาหาคุณในเวลาเดียวกัน&quot;">
+          "It's not a question of deeper. It's a question of opening wide, completely open... therefore it comes back to you at the same time."
+        </p>
+      </div>
+    </section>
+
+    <!-- Parallax Caption 3 -->
+    <div class="bgimg bgimg-3" role="img" aria-label="Twilight mountain landscape">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Practice in Daily Life" data-i18n-th="ปฏิบัติในชีวิตประจำวัน">Practice in Daily Life</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Experience Section -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" 
+              data-i18n-en="Experience" data-i18n-th="ประสบการณ์">Experience</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#healing" data-i18n-en="Healing" data-i18n-th="การเยียวยา">Healing</a></li>
+            <li><a class="footer__link" href="#journey" data-i18n-en="Journey" data-i18n-th="การเดินทาง">Journey</a></li>
+            <li><a class="footer__link" href="#circle" data-i18n-en="Circle" data-i18n-th="ชุมชน">Circle</a></li>
+          </ul>
+        </section>
+
+        <!-- Connect Section -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" 
+              data-i18n-en="Connect" data-i18n-th="เชื่อมต่อ">Connect</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#calendar" data-i18n-en="Calendar" data-i18n-th="ปฏิทิน">Calendar</a></li>
+            <li><a class="footer__link" href="#membership" data-i18n-en="Membership" data-i18n-th="สมาชิกภาพ">Membership</a></li>
+            <li><a class="footer__link" href="#contact" data-i18n-en="Contact" data-i18n-th="ติดต่อ">Contact</a></li>
+          </ul>
+        </section>
+
+        <!-- Foundation Section -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" 
+              data-i18n-en="Foundation" data-i18n-th="มูลนิธิ">Foundation</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#about" data-i18n-en="Origins &amp; Lineage" data-i18n-th="จุดกำเนิดและสายใน">Origins &amp; Lineage</a></li>
+            <li><a class="footer__link" href="#journal" data-i18n-en="Journal" data-i18n-th="บันทึก">Journal</a></li>
+            <li><a class="footer__link" href="#privacy" data-i18n-en="Privacy &amp; Ethics" data-i18n-th="ความเป็นส่วนตัวและจริยธรรม">Privacy &amp; Ethics</a></li>
+          </ul>
+        </section>
+
+        <!-- Visit Section -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" 
+              data-i18n-en="Visit" data-i18n-th="เยี่ยมชม">Visit</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#location" data-i18n-en="Location" data-i18n-th="ที่ตั้ง">Location</a></li>
+            <li><a class="footer__link" href="#art" data-i18n-en="Sacred Art Gallery" data-i18n-th="แกลเลอรีศิลป์ศักดิ์สิทธิ์">Sacred Art Gallery</a></li>
+            <li><a class="footer__link" href="#concierge" data-i18n-en="VIP Services" data-i18n-th="บริการพิเศษ">VIP Services</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer__bottom">
+        <p data-i18n-en="© 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhism wisdom." 
+           data-i18n-th="© 2025 มูลนิธิสยามวัชรยาน สถานที่แห่งปัญญาวัชรยาน">
+          © 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhism wisdom.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+    // ==========================================
+    // Prevent scroll restoration on reload
+    // ==========================================
+    (function() {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+    })();
+
+    // ==========================================
+    // Sync aria-hidden for nav panel
+    // ==========================================
+    (function() {
+      const panel = document.getElementById('primary-nav');
+      if (!panel) return;
+
+      const mq = window.matchMedia('(max-width: 768px)');
+      
+      function syncAria() {
+        panel.setAttribute('aria-hidden', mq.matches ? 'true' : 'false');
+      }
+      
+      syncAria();
+      mq.addEventListener('change', syncAria);
+    })();
+
+    // ==========================================
+    // Header menu toggle + focus trap
+    // ==========================================
+    (function() {
+      const header = document.querySelector('.header');
+      const btn = document.querySelector('.header__menu-toggle');
+      const panel = document.getElementById('primary-nav');
+      
+      if (!header || !btn || !panel) return;
+
+      const openMenu = () => {
+        header.classList.add('header--open');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+        const firstLink = panel.querySelector('a');
+        if (firstLink) firstLink.focus({ preventScroll: true });
+      };
+
+      const closeMenu = () => {
+        header.classList.remove('header--open');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+        document.getElementById('langMenuMobile')?.classList.remove('open');
+      };
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+
+      panel.addEventListener('click', (e) => {
+        if (e.target.closest('a')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Focus trap
+      function onKeydown(e) {
+        if (!header.classList.contains('header--open') || e.key !== 'Tab') return;
+        
+        const focusables = header.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+      
+      document.addEventListener('keydown', onKeydown);
+    })();
+
+    // ==========================================
+    // Footer accordion (mobile only)
+    // ==========================================
+    (function() {
+      const mq = window.matchMedia('(max-width: 768px)');
+      const sections = document.querySelectorAll('.footer__section');
+
+      function setExpanded(sec, expand) {
+        const title = sec.querySelector('.footer__title');
+        if (!title) return;
+        title.setAttribute('aria-expanded', String(expand));
+        sec.classList.toggle('footer__section--open', expand);
+      }
+
+      function enableMobile() {
+        sections.forEach(sec => {
+          const title = sec.querySelector('.footer__title');
+          if (!title) return;
+          
+          setExpanded(sec, false);
+          
+          const toggle = () => setExpanded(sec, title.getAttribute('aria-expanded') !== 'true');
+          
+          if (title._footerClick) {
+            title.removeEventListener('click', title._footerClick);
+          }
+          if (title._footerKey) {
+            title.removeEventListener('keydown', title._footerKey);
+          }
+          
+          title._footerClick = toggle;
+          title._footerKey = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggle();
+            }
+          };
+          
+          title.addEventListener('click', title._footerClick);
+          title.addEventListener('keydown', title._footerKey);
+        });
+      }
+
+      function disableMobile() {
+        sections.forEach(sec => {
+          const title = sec.querySelector('.footer__title');
+          if (!title) return;
+          
+          setExpanded(sec, true);
+          
+          if (title._footerClick) {
+            title.removeEventListener('click', title._footerClick);
+            title._footerClick = null;
+          }
+          if (title._footerKey) {
+            title.removeEventListener('keydown', title._footerKey);
+            title._footerKey = null;
+          }
+        });
+      }
+
+      const onChange = e => e.matches ? enableMobile() : disableMobile();
+      onChange(mq);
+      mq.addEventListener('change', onChange);
+    })();
+
+    // ==========================================
+    // Language switcher with URL & localStorage
+    // ==========================================
+    (function() {
+      const SUPPORTED = ["en", "th"];
+      const DEFAULT = "en";
+      const STORAGE_KEY = "sv-lang";
+
+      const desktop = {
+        wrap: document.getElementById('langDropdownDesktop'),
+        toggle: document.getElementById('langToggle'),
+        menu: document.getElementById('langMenu'),
+      };
+      
+      const mobile = {
+        wrap: document.querySelector('.mobile-lang'),
+        toggle: document.getElementById('langToggleMobile'),
+        menu: document.getElementById('langMenuMobile'),
+      };
+
+      function getLangFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get("lang");
+        const v = lang ? lang.toLowerCase() : null;
+        return SUPPORTED.includes(v) ? v : null;
+      }
+
+      function getStoredLang() {
+        const v = localStorage.getItem(STORAGE_KEY);
+        return SUPPORTED.includes(v) ? v : null;
+      }
+
+      function apply(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        
+        document.querySelectorAll('[data-i18n-en]').forEach(el => {
+          const txt = el.getAttribute(`data-i18n-${lang}`);
+          if (txt) el.textContent = txt;
+        });
+        
+        const displayText = (lang === "th" ? "ไทย" : "English") + " ▾";
+        if (desktop.toggle) desktop.toggle.textContent = displayText;
+        if (mobile.toggle) mobile.toggle.textContent = displayText;
+      }
+
+      function setLang(lang, remember = true) {
+        apply(lang);
+        if (remember) localStorage.setItem(STORAGE_KEY, lang);
+      }
+
+      // Initialize: URL > storage > default
+      const urlLang = getLangFromURL();
+      const stored = getStoredLang();
+      setLang(urlLang || stored || DEFAULT, !urlLang);
+
+      function bindDropdown(toggle, menu, isMobile = false) {
+        if (!toggle || !menu) return;
+        
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('open');
+        });
+        
+        menu.addEventListener('click', (e) => {
+          const v = e.target?.dataset?.lang;
+          if (v && SUPPORTED.includes(v)) {
+            setLang(v);
+            menu.classList.remove('open');
+            
+            // Close mobile menu after language switch
+            if (isMobile) {
+              const header = document.querySelector('.header');
+              const btn = document.querySelector('.header__menu-toggle');
+              if (header && btn) {
+                header.classList.remove('header--open');
+                btn.setAttribute('aria-expanded', 'false');
+                document.getElementById('primary-nav')?.setAttribute('aria-hidden', 'true');
+              }
+            }
+          }
+        });
+        
+        document.addEventListener('click', (e) => {
+          if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.remove('open');
+          }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') menu.classList.remove('open');
+        });
+      }
+
+      bindDropdown(desktop.toggle, desktop.menu, false);
+      bindDropdown(mobile.toggle, mobile.menu, true);
+
+      // Ensure only one picker is focusable per viewport (a11y)
+      const mq = window.matchMedia('(max-width: 768px)');
+      
+      function syncPickerA11y() {
+        if (mq.matches) {
+          // Mobile view: desktop hidden & unfocusable
+          if (desktop.wrap) {
+            desktop.wrap.setAttribute('aria-hidden', 'true');
+            desktop.wrap.querySelectorAll('button').forEach(b => b.tabIndex = -1);
+          }
+          if (mobile.wrap) {
+            mobile.wrap.setAttribute('aria-hidden', 'false');
+            mobile.wrap.querySelectorAll('button').forEach(b => b.tabIndex = 0);
+          }
+        } else {
+          // Desktop view: mobile hidden & unfocusable
+          if (desktop.wrap) {
+            desktop.wrap.setAttribute('aria-hidden', 'false');
+            desktop.wrap.querySelectorAll('button').forEach(b => b.tabIndex = 0);
+          }
+          if (mobile.wrap) {
+            mobile.wrap.setAttribute('aria-hidden', 'true');
+            mobile.wrap.querySelectorAll('button').forEach(b => b.tabIndex = -1);
+          }
+        }
+      }
+      
+      syncPickerA11y();
+      mq.addEventListener('change', syncPickerA11y);
+    })();
+  </script>
+</body>
+</html>
