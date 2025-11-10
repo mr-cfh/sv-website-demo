@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Siam Vajrayana</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Siam Vajrayana — a Thai-founded sanctuary for Vajrayana wisdom, sacred art, and contemplative journeys. Revival of Thailand's Mahayana/Vajrayana heritage for modern seekers.">
+  <link rel="canonical" href="https://siamvajrayana.com/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFC34B">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Siam Vajrayana">
+  <meta property="og:description" content="Thai Vajrayana revival — wisdom, healing, sacred art, and community.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://siamvajrayana.com/">
+  <meta property="og:image" content="https://siamvajrayana.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicons -->
+  <link rel="icon" href="img/core/logo-c300.ico" sizes="any">
+  <link rel="apple-touch-icon" href="img/core/logo-c180.png">
+
+  <!-- Language Alternates for SEO -->
+  <link rel="alternate" href="https://siamvajrayana.com/?lang=en" hreflang="en">
+  <link rel="alternate" href="https://siamvajrayana.com/?lang=th" hreflang="th">
+  <link rel="alternate" href="https://siamvajrayana.com/" hreflang="x-default">
+
+  <!-- Performance: Preload Critical Fonts -->
+  <link rel="preload" href="font/WorkSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="font/JS-Chanok-Normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Siam Vajrayana Foundation",
+    "alternateName": "สยามวัชรยาน",
+    "url": "https://siamvajrayana.com",
+    "logo": "https://siamvajrayana.com/logo.png",
+    "description": "A Thai-founded sanctuary for Vajrayana wisdom, sacred art, and contemplative journeys. Revival of Thailand's Mahayana/Vajrayana heritage for modern seekers.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "TH"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": ["English", "Thai"]
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Stylesheets and Scripts -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/content.css">
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- ========================================
+       ACCESSIBILITY
+       Skip link for keyboard navigation
+  ======================================== -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ========================================
+       HEADER
+       Fixed navigation bar with:
+       - Logo
+       - Desktop navigation menu
+       - Mobile hamburger toggle
+       - Language switcher (desktop/mobile)
+  ======================================== -->
+  <header class="header" aria-label="Primary site header">
+    <nav aria-label="Primary navigation">
+      <div class="header__inner">
+
+        <!-- Logo: Links to homepage -->
+        <a href="index.html" class="header__logo" aria-label="Siam Vajrayana home">
+          <img src="img/core/logo-c300.webp" alt="" class="header__logo-icon" width="24" height="24" decoding="async"
+            fetchpriority="high">
+          <span data-i18n-en="Siam Vajrayana" data-i18n-th="สยามวัชรยาน">Siam Vajrayana</span>
+        </a>
+
+        <!-- Primary Navigation Menu -->
+        <ul class="header__nav" id="primary-nav">
+          <!-- Home -->
+          <li class="header__nav-item" data-sub="home">
+            <a class="header__nav-link" href="" data-i18n-en="Home" data-i18n-th="หน้าแรก">Home</a>
+            <ul class="subnav" aria-label="Home submenu"></ul>
+          </li>
+
+          <!-- Our Space: Desktop hover shows submenu, mobile shows accordion -->
+          <li class="header__nav-item" data-sub="ourspace">
+            <a class="header__nav-link" data-i18n-en="Our Space" data-i18n-th="พื้นที่ของเรา">Our Space</a>
+            <ul class="subnav" aria-label="Our Space submenu">
+              <li><a href="#ourspace-a" data-i18n-en="Item 1.1" data-i18n-th="รายการ 1.1">Submenu 1.1</a></li>
+              <li><a href="#ourspace-b" data-i18n-en="Item 1.2" data-i18n-th="รายการ 1.2">Submenu 1.2</a></li>
+              <li><a href="#ourspace-c" data-i18n-en="Item 1.3" data-i18n-th="รายการ 1.3">Submenu 1.3</a></li>
+            </ul>
+          </li>
+
+          <!-- Teachings -->
+          <li class="header__nav-item" data-sub="teachings">
+            <a class="header__nav-link" data-i18n-en="Teachings" data-i18n-th="คำสอน">Teachings</a>
+            <ul class="subnav" aria-label="Teachings submenu">
+              <li><a href="#teachings-a" data-i18n-en="Item 2.1" data-i18n-th="รายการ 2.1">Submenu 2.1</a></li>
+              <li><a href="#teachings-b" data-i18n-en="Item 2.2" data-i18n-th="รายการ 2.2">Submenu 2.2</a></li>
+              <li><a href="#teachings-c" data-i18n-en="Item 2.3" data-i18n-th="รายการ 2.3">Submenu 2.3</a></li>
+            </ul>
+          </li>
+
+          <!-- Community -->
+          <li class="header__nav-item" data-sub="community">
+            <a class="header__nav-link" data-i18n-en="Community" data-i18n-th="ชุมชน">Community</a>
+            <ul class="subnav" aria-label="Community submenu">
+              <li><a href="#community-a" data-i18n-en="Item 3.1" data-i18n-th="รายการ 3.1">Submenu 3.1</a></li>
+              <li><a href="#community-b" data-i18n-en="Item 3.2" data-i18n-th="รายการ 3.2">Submenu 3.2</a></li>
+              <li><a href="#community-c" data-i18n-en="Item 3.3" data-i18n-th="รายการ 3.3">Submenu 3.3</a></li>
+            </ul>
+          </li>
+
+          <!-- Events -->
+          <li class="header__nav-item" data-sub="events">
+            <a class="header__nav-link" data-i18n-en="Events" data-i18n-th="กิจกรรม">Events</a>
+            <ul class="subnav" aria-label="Events submenu">
+              <li><a href="#events-a" data-i18n-en="Item 4.1" data-i18n-th="รายการ 4.1">Submenu 4.1</a></li>
+              <li><a href="#events-b" data-i18n-en="Item 4.2" data-i18n-th="รายการ 4.2">Submenu 4.2</a></li>
+              <li><a href="#events-c" data-i18n-en="Item 4.3" data-i18n-th="รายการ 4.3">Submenu 4.3</a></li>
+            </ul>
+          </li>
+
+          <!-- Mobile Language Selector: Only visible in mobile menu -->
+          <li class="header__nav-item mobile-lang" aria-hidden="true">
+            <div class="lang-dropdown">
+              <button class="lang-btn" id="langToggleMobile" aria-haspopup="true" aria-expanded="false"
+                aria-label="Change language">
+                <!-- Text populated by JavaScript -->
+              </button>
+              <div class="lang-menu" id="langMenuMobile" aria-hidden="true">
+                <!-- Options populated by JavaScript -->
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Desktop Language Selector: Hidden on mobile -->
+        <div class="lang-dropdown" id="langDropdownDesktop" aria-hidden="false">
+          <button class="lang-btn" id="langToggle" aria-haspopup="true" aria-expanded="false"
+            aria-label="Change language">
+            <!-- Text populated by JavaScript -->
+          </button>
+          <div class="lang-menu" id="langMenu" aria-hidden="true">
+            <!-- Options populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="header__menu-toggle" aria-label="Main menu" aria-controls="primary-nav" aria-expanded="false">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <line class="bar bar--top" x1="-2" y1="5" x2="21" y2="5"></line>
+            <line class="bar bar--mid-1" x1="-2" y1="12" x2="21" y2="12"></line>
+            <line class="bar bar--mid-2" x1="-2" y1="12" x2="21" y2="12"></line>
+            <line class="bar bar--bot" x1="-2" y1="19" x2="21" y2="19"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================
+       DESKTOP SUBMENU BAR
+       Appears below header on hover/focus
+       Shows secondary navigation links
+       Hidden on mobile (mobile uses accordion)
+  ======================================== -->
+  <div class="submenu" role="navigation" aria-label="Secondary navigation">
+    <div class="submenu__inner">
+
+      <!-- Our Space Submenu Group -->
+      <div class="submenu__group" data-for="ourspace">
+        <a class="submenu__link" href="#healing" data-i18n-en="Item 1.1" data-i18n-th="รายการ 1.1">Submenu 1.1</a>
+        <a class="submenu__link" href="#journey" data-i18n-en="Item 1.2" data-i18n-th="รายการ 1.2">Submenu 1.2</a>
+        <a class="submenu__link" href="#circle" data-i18n-en="Item 1.3" data-i18n-th="รายการ 1.3">Submenu 1.3</a>
+      </div>
+
+      <!-- Teachings Submenu Group -->
+      <div class="submenu__group" data-for="teachings">
+        <a class="submenu__link" href="#art-a" data-i18n-en="Item 2.1" data-i18n-th="รายการ 2.1">Submenu 2.1</a>
+        <a class="submenu__link" href="#art-b" data-i18n-en="Item 2.2" data-i18n-th="รายการ 2.2">Submenu 2.2</a>
+        <a class="submenu__link" href="#art-c" data-i18n-en="Item 2.3" data-i18n-th="รายการ 2.3">Submenu 2.3</a>
+      </div>
+
+      <!-- Community Submenu Group -->
+      <div class="submenu__group" data-for="community">
+        <a class="submenu__link" href="#member-a" data-i18n-en="Item 3.1" data-i18n-th="รายการ 3.1">Submenu 3.1</a>
+        <a class="submenu__link" href="#member-b" data-i18n-en="Item 3.2" data-i18n-th="รายการ 3.2">Submenu 3.2</a>
+        <a class="submenu__link" href="#member-c" data-i18n-en="Item 3.3" data-i18n-th="รายการ 3.3">Submenu 3.3</a>
+      </div>
+
+      <!-- Events Submenu Group -->
+      <div class="submenu__group" data-for="events">
+        <a class="submenu__link" href="#journal-a" data-i18n-en="Item 4.1" data-i18n-th="รายการ 4.1">Submenu 4.1</a>
+        <a class="submenu__link" href="#journal-b" data-i18n-en="Item 4.2" data-i18n-th="รายการ 4.2">Submenu 4.2</a>
+        <a class="submenu__link" href="#journal-c" data-i18n-en="Item 4.3" data-i18n-th="รายการ 4.3">Submenu 4.3</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay: Dark backdrop when menu is open -->
+  <div class="site-overlay" aria-hidden="true" tabindex="-1"></div>
+
+  <!-- ========================================
+       MAIN CONTENT
+  ======================================== -->
+  <main id="main">
+
+    <!-- ====================================
+         HERO SECTION
+         Full-screen landing with:
+         - Background image (parallax)
+         - Title and subtitle
+         - Logo badge
+         - Call-to-action buttons
+    ==================================== -->
+    <div class="bgimg bgimg-1" role="img" aria-label="Mountain landscape">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 data-i18n-en="Enter the Mandala of Siam Vajrayana" data-i18n-th="เข้าสู่มันดาลาแห่งสยามวัชรยาน">
+            Enter the Mandala of Siam Vajrayana
+          </h1>
+          <div class="hero-badge">
+            <img src="img/content/logo-content-c800.webp" alt="Siam Vajrayana emblem" class="hero-badge__img">
+          </div>
+          <p class="subline"
+            data-i18n-en="A sanctuary of Thai Vajrayana wisdom, healing arts, and sacred journeys in the heart of Thailand"
+            data-i18n-th="สถานปฏิบัติ วัชรยานแบบไทยเพื่อปัญญา การเยียวยา และการเดินทางศักดิ์สิทธิ์ ในใจกลางประเทศไทย">
+            A sanctuary of Thai Vajrayana wisdom, healing arts, and sacred journeys in the heart of Thailand
+          </p>
+          <div class="action-row">
+            <a href="#cta1" class="btn btn-primary" data-i18n-en="Explore Our Path"
+              data-i18n-th="สำรวจเส้นทางของเรา">Explore Our Path</a>
+            <a href="#cta2" class="btn btn-secondary" data-i18n-en="Book a Private Visit"
+              data-i18n-th="จองการเยี่ยมส่วนตัว">Book a Private Visit</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====================================
+         THREE SACRED PATHS SECTION
+         Features grid showcasing:
+         - Healing services
+         - Journey experiences
+         - Circle community
+    ==================================== -->
+    <section class="section section--light feature-section" id="three-sacred-paths">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <h2 data-i18n-en="Three Sacred Paths" data-i18n-th="สามวิถีศักดิ์สิทธิ์">Three Sacred Paths</h2>
+          <p data-i18n-en="Our foundation offers transformative experiences rooted in ancient wisdom, adapted for the modern seeker"
+            data-i18n-th="เรานำเสนอประสบการณ์การเปลี่ยนแปลงที่หยั่งรากในปัญญาโบราณ ปรับให้เหมาะกับผู้แสวงหายุคใหม่">
+            Our foundation offers transformative experiences rooted in ancient wisdom, adapted for the modern seeker
+          </p>
+        </div>
+
+        <!-- Feature Cards Grid -->
+        <div class="feature-grid">
+
+          <!-- Card 1: Healing -->
+          <a href="#healing" class="feature-card">
+            <svg class="feature-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M28 8 L14 16 L28 24 L42 16 Z" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="M14 24 L28 32 L42 24" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="M14 32 L28 40 L42 32" stroke-width="2" stroke-linejoin="round"></path>
+              <circle cx="28" cy="12" r="2" fill="currentColor"></circle>
+              <circle cx="28" cy="44" r="2" fill="currentColor"></circle>
+            </svg>
+            <h3 data-i18n-en="Healing" data-i18n-th="การเยียวยา">Healing</h3>
+            <div class="feature-card__eyebrow" data-i18n-en="Energy, blessing, and sound"
+              data-i18n-th="พลังงาน พรมนต์ และเสียงบำบัด">
+              Energy, blessing, and sound
+            </div>
+            <p data-i18n-en="Bespoke consultations combining energy work, blessings, and therapeutic sound features. Each session is crafted to your unique needs in our sacred space."
+              data-i18n-th="การปรึกษาเฉพาะบุคคล ผสานงานพลังงาน พรมนต์ และประสบการณ์เสียงบำบัด ทุกรอบออกแบบตามความต้องการของคุณในพื้นที่ศักดิ์สิทธิ์ของเรา">
+              Bespoke consultations combining energy work, blessings, and therapeutic sound features. Each session is
+              crafted to your unique needs in our sacred space.
+            </p>
+            <span class="feature-card__cta" data-i18n-en="Learn about healing services"
+              data-i18n-th="ดูบริการการเยียวยา">
+              Learn about healing services
+            </span>
+          </a>
+
+          <!-- Card 2: Journey -->
+          <a href="#journey" class="feature-card">
+            <svg class="feature-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="28" cy="28" r="20" stroke-width="2"></circle>
+              <circle cx="28" cy="28" r="12" stroke-width="2"></circle>
+              <circle cx="28" cy="28" r="4" stroke-width="2"></circle>
+              <line x1="28" y1="8" x2="28" y2="16" stroke-width="2"></line>
+              <line x1="28" y1="40" x2="28" y2="48" stroke-width="2"></line>
+              <line x1="8" y1="28" x2="16" y2="28" stroke-width="2"></line>
+              <line x1="40" y1="28" x2="48" y2="28" stroke-width="2"></line>
+              <line x1="13.8" y1="13.8" x2="19.8" y2="19.8" stroke-width="2"></line>
+              <line x1="36.2" y1="36.2" x2="42.2" y2="42.2" stroke-width="2"></line>
+              <line x1="42.2" y1="13.8" x2="36.2" y2="19.8" stroke-width="2"></line>
+              <line x1="19.8" y1="36.2" x2="13.8" y2="42.2" stroke-width="2"></line>
+            </svg>
+            <h3 data-i18n-en="Journey" data-i18n-th="การเดินทาง">Journey</h3>
+            <div class="feature-card__eyebrow" data-i18n-en="Ritual, meditation, sacred art"
+              data-i18n-th="พิธีกรรม สมาธิ ศิลป์ศักดิ์สิทธิ์">
+              Ritual, meditation, sacred art
+            </div>
+            <p data-i18n-en="Small, guided features through ritual, meditation, and sacred art. Personal, dignified encounters with timeless Vajrayana practices."
+              data-i18n-th="ประสบการณ์กลุ่มเล็กพร้อมผู้นำ ผ่านพิธีกรรม สมาธิ และศิลปะศักดิ์สิทธิ์ สัมผัสที่มีศักดิ์ศรีกับการปฏิบัติของวัชรยาน">
+              Small, guided features through ritual, meditation, and sacred art. Personal, dignified encounters with
+              timeless Vajrayana practices.
+            </p>
+            <span class="feature-card__cta" data-i18n-en="Explore journey offerings"
+              data-i18n-th="สำรวจรูปแบบการเดินทาง">
+              Explore journey offerings
+            </span>
+          </a>
+
+          <!-- Card 3: Circle -->
+          <a href="#circle" class="feature-card">
+            <svg class="feature-card__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="28" cy="20" r="8" stroke-width="2"></circle>
+              <circle cx="16" cy="36" r="8" stroke-width="2"></circle>
+              <circle cx="40" cy="36" r="8" stroke-width="2"></circle>
+              <path d="M23 26 L19 32" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M33 26 L37 32" stroke-width="2" stroke-linecap="round"></path>
+              <circle cx="28" cy="28" r="3" fill="currentColor"></circle>
+            </svg>
+            <h3 data-i18n-en="Circle" data-i18n-th="ชุมชน">Circle</h3>
+            <div class="feature-card__eyebrow" data-i18n-en="Teachings, events, belonging"
+              data-i18n-th="การเรียนรู้ กิจกรรม การเชื่อมต่อ">
+              Teachings, events, belonging
+            </div>
+            <p data-i18n-en="A continuing community for seekers—your spiritual home away from home. Membership brings ongoing teachings, events, and connection."
+              data-i18n-th="ชุมชนต่อเนื่องสำหรับผู้แสวงหา—บ้านทางจิตวิญญาณของคุณ สมาชิกภาพเปิดสู่การเรียนรู้ กิจกรรม และการเชื่อมต่ออย่างต่อเนื่อง">
+              A continuing community for seekers—your spiritual home away from home. Membership brings ongoing
+              teachings, events, and connection.
+            </p>
+            <span class="feature-card__cta" data-i18n-en="Join the circle" data-i18n-th="เข้าร่วมชุมชน">
+              Join the circle
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================
+         PARALLAX & QUOTE SECTIONS
+         Alternating pattern of:
+         - Parallax background images
+         - Inspirational quotes
+    ==================================== -->
+
+    <!-- Parallax Image 1: Forest -->
+    <div class="bgimg bgimg-2" role="img" aria-label="Forest landscape">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Revival of Thai Vajrayana" data-i18n-th="การฟื้นคืนวัชรยานแบบไทย">
+          Revival of Thai Vajrayana
+        </span>
+      </div>
+    </div>
+
+    <!-- Quote 1: Mind Training -->
+    <section class="section section--dark">
+      <div class="highlight-quote">
+        <p data-i18n-en="&quot;Taming the mind is the process of refining away mental afflictions until we aren't ruled by our circumstances and the negative thoughts and emotions they elicit.&quot;"
+          data-i18n-th="&quot;การฝึกจิตคือการค่อยๆ กลั่นกิเลสออกไป จนเราไม่ถูกครอบงำด้วยสถานการณ์และความคิดอารมณ์ลบที่มันกระตุ้นขึ้นมา&quot;">
+          "Taming the mind is the process of refining away mental afflictions until we aren't ruled by our circumstances
+          and the negative thoughts and emotions they elicit."
+        </p>
+      </div>
+    </section>
+
+    <!-- Parallax Image 2: Historical Mural -->
+    <div class="bgimg bgimg-4" role="img" aria-label="Historical mural: Arhats and Shakyamuni">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Sacred Art & Heritage" data-i18n-th="ศิลป์ศักดิ์สิทธิ์และมรดก">
+          Sacred Art & Heritage
+        </span>
+      </div>
+    </div>
+
+    <!-- Quote 2: Opening Wide -->
+    <section class="section section--dark">
+      <div class="highlight-quote">
+        <p data-i18n-en="&quot;It's not a question of deeper. It's a question of opening wide, completely open... therefore it comes back to you at the same time.&quot;"
+          data-i18n-th="&quot;ไม่ใช่คำถามว่าจะลึกแค่ไหน แต่คือการเปิดกว้าง เปิดทั้งหมด... เมื่อเปิดได้ พลังงานก็ย้อนกลับมาหาคุณในเวลาเดียวกัน&quot;">
+          "It's not a question of deeper. It's a question of opening wide, completely open... therefore it comes back to
+          you at the same time."
+        </p>
+      </div>
+    </section>
+
+    <!-- Parallax Image 3: Twilight Mountains -->
+    <div class="bgimg bgimg-3" role="img" aria-label="Twilight mountain landscape">
+      <div class="caption">
+        <span class="caption-badge" data-i18n-en="Practice in Daily Life" data-i18n-th="ปฏิบัติในชีวิตประจำวัน">
+          Practice in Daily Life
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       Multi-column layout on desktop
+       Collapsible accordion on mobile
+       Sections:
+       - Experience
+       - Connect
+       - Foundation
+       - Visit
+  ======================================== -->
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Footer Column 1: Experience -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" data-i18n-en="Experience"
+            data-i18n-th="ประสบการณ์">
+            Experience
+          </h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#healing" data-i18n-en="Healing" data-i18n-th="การเยียวยา">Healing</a>
+            </li>
+            <li><a class="footer__link" href="#journey" data-i18n-en="Journey" data-i18n-th="การเดินทาง">Journey</a>
+            </li>
+            <li><a class="footer__link" href="#circle" data-i18n-en="Circle" data-i18n-th="ชุมชน">Circle</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Column 2: Connect -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" data-i18n-en="Connect"
+            data-i18n-th="เชื่อมต่อ">
+            Connect
+          </h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#calendar" data-i18n-en="Calendar" data-i18n-th="ปฏิทิน">Calendar</a></li>
+            <li><a class="footer__link" href="#membership" data-i18n-en="Membership"
+                data-i18n-th="สมาชิกภาพ">Membership</a></li>
+            <li><a class="footer__link" href="#contact" data-i18n-en="Contact" data-i18n-th="ติดต่อ">Contact</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Column 3: Foundation -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" data-i18n-en="Foundation"
+            data-i18n-th="มูลนิธิ">
+            Foundation
+          </h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#about" data-i18n-en="Origins &amp; Lineage"
+                data-i18n-th="จุดกำเนิดและสายใน">Origins &amp; Lineage</a></li>
+            <li><a class="footer__link" href="#journal" data-i18n-en="Journal" data-i18n-th="บันทึก">Journal</a></li>
+            <li><a class="footer__link" href="#privacy" data-i18n-en="Privacy &amp; Ethics"
+                data-i18n-th="ความเป็นส่วนตัวและจริยธรรม">Privacy &amp; Ethics</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Column 4: Visit -->
+        <section class="footer__section">
+          <h4 class="footer__title" role="button" tabindex="0" aria-expanded="true" data-i18n-en="Visit"
+            data-i18n-th="เยี่ยมชม">
+            Visit
+          </h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="#location" data-i18n-en="Location" data-i18n-th="ที่ตั้ง">Location</a>
+            </li>
+            <li><a class="footer__link" href="#art" data-i18n-en="Sacred Art Gallery"
+                data-i18n-th="แกลเลอรีศิลป์ศักดิ์สิทธิ์">Sacred Art Gallery</a></li>
+            <li><a class="footer__link" href="#concierge" data-i18n-en="VIP Services" data-i18n-th="บริการพิเศษ">VIP
+                Services</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Copyright Notice -->
+      <div class="footer__bottom">
+        <p data-i18n-en="© 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhist wisdom."
+          data-i18n-th="© 2025 มูลนิธิสยามวัชรยาน สถานที่แห่งปัญญาวัชรยาน">
+          © 2025 Siam Vajrayana Foundation. A sanctuary of Vajrayana Buddhist wisdom.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
